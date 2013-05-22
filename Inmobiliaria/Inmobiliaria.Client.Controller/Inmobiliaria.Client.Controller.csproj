@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EFBB04A4-08CC-4F3C-B38F-C449AF1BBB57}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inmobiliaria.Client.Controller</RootNamespace>
+    <AssemblyName>Inmobiliaria.Client.Controller</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="InfoCategoriaFoto.cs" />
+    <Compile Include="InfoGeneralFoto.cs" />
+    <Compile Include="InfoInfraestructuraApartamento.cs" />
+    <Compile Include="InformacionEdificio.cs" />
+    <Compile Include="InfoServicioApartamento.cs" />
+    <Compile Include="LocalDataStore.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ServiceInmobiliaria\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ServicesManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Apartamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Edificio.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Fotos_Apartamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Infraestructura.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Infraestructura_Apartamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Infraestructura_Detalle.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Servcio_Apartamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Servicios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Ubicacion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Ubicacion_Detalle.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Service11.wsdl" />
+    <None Include="Service References\ServiceInmobiliaria\Service15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Service151.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Service152.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Service153.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Service154.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Service155.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceInmobiliaria\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceInmobiliaria\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceInmobiliaria\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceInmobiliaria\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceInmobiliaria\Service11.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
