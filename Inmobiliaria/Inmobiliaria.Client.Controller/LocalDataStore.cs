@@ -9,7 +9,7 @@ namespace Inmobiliaria.Client.Controller
 {
     public static class LocalDataStore
     {
-        //static ServicesManager _serviceManager = ServicesManager.Instance; 
+        //nuevo cambio
 
         #region trabajando con edificios
         static List<Model.Edificio> _listEdificios;
