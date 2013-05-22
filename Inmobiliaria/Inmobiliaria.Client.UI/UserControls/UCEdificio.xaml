@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Inmobiliaria.Client.UI.UserControls.UCEdificio"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="392" d:DesignWidth="785">
+    <Grid Name="grid_Context">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60*" />
+            <ColumnDefinition Width="40*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="80*" />
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Column="1" Grid.Row="1">
+            <StackPanel >
+                <Expander Name="exp_Informacion" Header="Informacion" Cursor="Hand"  >
+                    <StackPanel>
+                        <Label Content="{Binding InfoUbicacion}" />
+                        <Label Content="{Binding InfoTotalApartamentos}" />
+                        <Label Content="{Binding InfoNPlantas}" />
+                        <Label Content="{Binding InfoSobreAconstruccion}" />
+                        <Label Content="{Binding InfoMasInformacion}" />
+                    </StackPanel>
+                </Expander>
+                <Expander Name="exp_Fotos" Header="Fotos" Cursor="Hand">
+
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
+
+        <ListBox Name="lbx_DataList" Grid.Row="1" SelectionChanged="lbx_DataList_SelectionChanged" ItemContainerStyle="{DynamicResource MetroListBoxItemStyle}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1" BorderBrush="Orange" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="600"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="5"/>
+                            </Grid.RowDefinitions>
+                            <Path Grid.ColumnSpan="2" Grid.Row="3" Stroke="{StaticResource BackgroundOrange}" Height="2"  Width="100"/>
+                            <Image  Grid.RowSpan="3" Source="{Binding mainfoto}" Stretch="Fill" />
+                            <StackPanel Grid.Column="1">
+                                <Label Content="{Binding Path=Nombre, FallbackValue=NoOne}"  />
+                                <Label Content="{Binding Path=Inf_Adicional, FallbackValue=Nothing}"  />
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Right" >
+                                <Button Content="Eliminar"  Name="btn_Delete"  Click="btn_Delete_Click" Tag="{Binding Id}" Width="110" />
+                                <Button Content="Modificar" Name="btn_Update" Click="btn_Update_Click"  Tag="{Binding Id}"  Width="{Binding Width,ElementName=btn_Delete}"/>
+                                <Button Content="Apartamentos" Name="btn_VerApartamentos" Tag="{Binding Id}"  Width="120" Click="btn_VerApartamentos_Click" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Nuevo Edificio" Name="Nuevo" Width="97" Click="Nuevo_Click" Height="25"/>
+            <Button Content="Nuevo Edificio" Name="button1" Width="97" Height="25"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

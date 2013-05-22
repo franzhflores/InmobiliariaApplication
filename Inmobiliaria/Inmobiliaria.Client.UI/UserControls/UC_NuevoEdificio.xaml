@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Inmobiliaria.Client.UI.UserControls.UC_NuevoEdificio"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"          
+             Height="400" Width="833">
+    <Grid Name="grid_parent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48*" />
+            <RowDefinition Height="39*" />
+            <RowDefinition Height="29*" />
+            <RowDefinition Height="34*" />
+            <RowDefinition Height="31*" />
+            <RowDefinition Height="32*" />
+            <RowDefinition Height="36*" />
+            <RowDefinition Height="33*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="138*" />
+            <ColumnDefinition Width="136*" />
+            <ColumnDefinition Width="203*" />
+            <ColumnDefinition Width="274*" />
+        </Grid.ColumnDefinitions>        
+        <Label Content="Nombre" Height="28" HorizontalAlignment="Left" Margin="115,1,0,0" Name="label1" VerticalAlignment="Top" Width="155" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="2,1,0,0" Name="txt_Nombre" VerticalAlignment="Top" Width="191" Grid.Column="2" Grid.Row="1" />
+        <Label Content="# Plantas" Height="28" HorizontalAlignment="Left" Margin="115,1,0,0" Name="label2" VerticalAlignment="Top" Width="155" Grid.Row="2" Grid.ColumnSpan="2" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="2,1,0,0" Name="txt_NPlantas" VerticalAlignment="Top" Width="191" Grid.Column="2" Grid.Row="2" />
+        <Label Content="Informacion Adicional" Height="28" HorizontalAlignment="Left" Margin="115,6,0,0" Name="label3" VerticalAlignment="Top" Width="155" Grid.Row="3" Grid.ColumnSpan="2" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="0,8,0,0" Name="txt_IAdicional" VerticalAlignment="Top" Width="191" Grid.Column="2" Grid.Row="3" />
+        <Label Content="Fecha de Creacion" Height="28" HorizontalAlignment="Left" Margin="115,6,0,0" Name="label4" VerticalAlignment="Top" Width="155" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+
+        <Image Grid.Column="3" Grid.Row="1" Grid.RowSpan="5" Height="150" HorizontalAlignment="Left" Margin="0,1,0,0" Name="ima_main" Stretch="Fill" VerticalAlignment="Top" Width="255" />
+        <Button Content="Agregar Foto" Height="23" HorizontalAlignment="Right" Margin="0,1,19,0" Name="btn_AgregarFoto" VerticalAlignment="Top" Width="75" Grid.Column="3" Grid.Row="6" Click="btn_AgregarFoto_Click" />
+        <ComboBox Grid.Column="2" Grid.Row="5" Height="23" HorizontalAlignment="Left" Margin="2,8,0,0" Name="cbx_Provincia" VerticalAlignment="Top" Width="191" SelectionChanged="cbx_Provincia_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Grid.Column="2" Text="{Binding Provincia}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="2,13,0,0" Name="cbx_Zona" VerticalAlignment="Top" Width="191" Grid.Column="2" Grid.Row="6" SelectionChanged="cbx_Zona_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Grid.Column="2" Text="{Binding Zona}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Content="Provincia" Grid.ColumnSpan="2" Height="28" HorizontalAlignment="Left" Margin="115,3,0,0" Name="label5" VerticalAlignment="Top" Width="155" Grid.Row="5" />
+        <Label Content="Zona" Grid.ColumnSpan="2" Height="28" HorizontalAlignment="Left" Margin="115,1,0,0" Name="label6" VerticalAlignment="Top" Width="155" Grid.Row="6" />
+        <Label Content="Direccion" Grid.ColumnSpan="2" Height="28" HorizontalAlignment="Left" Margin="117,3,0,0" Name="label7" VerticalAlignment="Top" Width="155" Grid.Row="7" />
+        <TextBox Grid.Column="2" Height="23" HorizontalAlignment="Left" Margin="2,5,0,0" Name="textBox1" VerticalAlignment="Top" Width="191" Grid.Row="7" />
+      
+        <DatePicker   Name="calendar1"  Grid.Row="4" Grid.Column="2" Height="25" Foreground="White" />
+        <Canvas Grid.ColumnSpan="4"   Name="canvas1" >
+            <Label Content="Agregar Nuevo Edificio"> </Label>
+        </Canvas>
+    </Grid>
+</UserControl>

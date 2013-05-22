@@ -1,0 +1,36 @@
+﻿<Window x:Class="Inmobiliaria.Client.UI.UserControls.Win_ModificarEdificio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Win_ModificarEdificio" Height="300" Width="633">
+    <Grid Name="main">
+        <Canvas Margin="8,28,30,213" Background="White">
+            <Grid ShowGridLines="True" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="180"/>
+                </Grid.ColumnDefinitions>
+                <!-- Assumes MVVM and you wish to bind to properties and commands -->
+                <Label Content="Nombre" Grid.Row="1" HorizontalContentAlignment="Right" />
+                <TextBox  Text="{Binding Nombre}" Grid.Row="1" Grid.Column="1" />
+                <Label Content="Año de contruccion" Grid.Row="2" HorizontalContentAlignment="Right" />
+                <TextBox  Text="{Binding A_Contruccion}" Grid.Row="2" Grid.Column="1"/>
+                <Label Content="N de Plantas" Grid.Row="3" HorizontalContentAlignment="Right" />
+                <TextBox  Text="{Binding N_Plantas}" Grid.Row="3" Grid.Column="1"/>
+                <Label Content="Mas Informacion" Grid.Row="4" HorizontalContentAlignment="Right" />
+                <TextBox  Text="{Binding Inf_Adicional}" Grid.Row="4" Grid.Column="1"/>
+                <Image Grid.Column="2" Grid.RowSpan="5" Source="{Binding mainfoto}" Stretch="Fill" />
+                <Button Content="Aceptar" Grid.Column="1" Margin="0,4" Name="btn_Aceptar" Grid.Row="5" HorizontalAlignment="Right" Width="88" Click="btn_Aceptar_Click" />
+                <Button Content="Cancelar" Grid.Column="1" Margin="112,4,92,4" Name="btn_Cancelar" Grid.Row="5" Click="btn_Cancelar_Click" />
+            </Grid>
+        </Canvas>
+    </Grid>
+</Window>

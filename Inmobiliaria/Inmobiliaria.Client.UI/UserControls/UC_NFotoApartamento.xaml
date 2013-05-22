@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Inmobiliaria.Client.UI.UserControls.UC_NFotoApartamento"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Height="240" Width="480">
+  
+        <Grid  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="100"/>
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160" />
+                <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="20*" />
+        </Grid.ColumnDefinitions>
+            <!-- Assumes MVVM and you wish to bind to properties and commands -->
+            <Label Content="Descripcion" Grid.Row="1" HorizontalContentAlignment="Right" />
+            <TextBox   Grid.Row="1" Grid.Column="1" Name="txt_descripcion"/>
+            <Label Content="Infraestructura" Grid.Row="2" HorizontalContentAlignment="Right" />
+        <ComboBox Grid.Column="1" Grid.Row="2" Name="cbx_infra" SelectionChanged="cbx_infra_SelectionChanged" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Grid.Column="2" Text="{Binding Descripcion}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Content="Foto" Grid.Row="3" Width="60"  HorizontalAlignment="Right" Name="btn_LoadFoto" Click="btn_LoadFoto_Click" />
+            <Image Grid.Column="1" Grid.Row="3" Name="Foto" Stretch="Fill"   Grid.RowSpan="2" Margin="44,0,37,0" />
+        </Grid>
+</UserControl>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2360/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+  <xs:complexType name="ArrayOfKeyValueOfUbicacionArrayOfUbicacion_Detallej0w9PRQY">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfUbicacionArrayOfUbicacion_Detallej0w9PRQY">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" name="Key" nillable="true" type="q1:Ubicacion" />
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" name="Value" nillable="true" type="q2:ArrayOfUbicacion_Detalle" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfUbicacionArrayOfUbicacion_Detallej0w9PRQY" nillable="true" type="tns:ArrayOfKeyValueOfUbicacionArrayOfUbicacion_Detallej0w9PRQY" />
+  <xs:complexType name="ArrayOfKeyValueOfInfraestructuraArrayOfInfraestructura_Detallej0w9PRQY">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfInfraestructuraArrayOfInfraestructura_Detallej0w9PRQY">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" name="Key" nillable="true" type="q3:Infraestructura" />
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" name="Value" nillable="true" type="q4:ArrayOfInfraestructura_Detalle" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfInfraestructuraArrayOfInfraestructura_Detallej0w9PRQY" nillable="true" type="tns:ArrayOfKeyValueOfInfraestructuraArrayOfInfraestructura_Detallej0w9PRQY" />
+</xs:schema>

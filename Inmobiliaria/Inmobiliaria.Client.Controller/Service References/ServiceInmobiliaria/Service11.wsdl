@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2360/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2360/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2360/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+      <xsd:import schemaLocation="http://localhost:2360/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" />
+      <xsd:import schemaLocation="http://localhost:2360/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="http://localhost:2360/Service1.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_GetTodosLosEdificios_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodosLosEdificios" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetTodosLosEdificios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodosLosEdificiosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDictionaryUbicaciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDictionaryUbicaciones" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDictionaryUbicaciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDictionaryUbicacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarEdificio_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarEdificio" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarEdificio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarEdificioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarEdificio_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarEdificio" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EliminarEdificio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarEdificioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ModificarEdificio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEdificio" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ModificarEdificio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEdificioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetApartamentosByIdEdificio_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApartamentosByIdEdificio" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetApartamentosByIdEdificio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApartamentosByIdEdificioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetApartamentosAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetApartamentosAll" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetApartamentosAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetApartamentosAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarApartamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarApartamento" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarApartamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarApartamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDictionaryInfraestructuras_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDictionaryInfraestructuras" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDictionaryInfraestructuras_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDictionaryInfraestructurasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarInfraestructuraApartamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarInfraestructuraApartamento" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarInfraestructuraApartamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarInfraestructuraApartamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarInfraestructuraDetalle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarInfraestructuraDetalle" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarInfraestructuraDetalle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarInfraestructuraDetalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetInfraestructuraApartamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInfraestructuraApartamento" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetInfraestructuraApartamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInfraestructuraApartamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetListServicios_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListServicios" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetListServicios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListServiciosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetListServicioApartamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListServicioApartamento" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetListServicioApartamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListServicioApartamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarServicioApartamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarServicioApartamento" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarServicioApartamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarServicioApartamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarServicio" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarFotosApartamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarFotosApartamento" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarFotosApartamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarFotosApartamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFotosApartamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFotosApartamento" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFotosApartamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFotosApartamentoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="GetTodosLosEdificios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTodosLosEdificios" message="tns:IService1_GetTodosLosEdificios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTodosLosEdificiosResponse" message="tns:IService1_GetTodosLosEdificios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDictionaryUbicaciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDictionaryUbicaciones" message="tns:IService1_GetDictionaryUbicaciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDictionaryUbicacionesResponse" message="tns:IService1_GetDictionaryUbicaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarEdificio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GuardarEdificio" message="tns:IService1_GuardarEdificio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GuardarEdificioResponse" message="tns:IService1_GuardarEdificio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEdificio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EliminarEdificio" message="tns:IService1_EliminarEdificio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EliminarEdificioResponse" message="tns:IService1_EliminarEdificio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEdificio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ModificarEdificio" message="tns:IService1_ModificarEdificio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ModificarEdificioResponse" message="tns:IService1_ModificarEdificio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApartamentosByIdEdificio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetApartamentosByIdEdificio" message="tns:IService1_GetApartamentosByIdEdificio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetApartamentosByIdEdificioResponse" message="tns:IService1_GetApartamentosByIdEdificio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApartamentosAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetApartamentosAll" message="tns:IService1_GetApartamentosAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetApartamentosAllResponse" message="tns:IService1_GetApartamentosAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarApartamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GuardarApartamento" message="tns:IService1_GuardarApartamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GuardarApartamentoResponse" message="tns:IService1_GuardarApartamento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDictionaryInfraestructuras">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDictionaryInfraestructuras" message="tns:IService1_GetDictionaryInfraestructuras_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDictionaryInfraestructurasResponse" message="tns:IService1_GetDictionaryInfraestructuras_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarInfraestructuraApartamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GuardarInfraestructuraApartamento" message="tns:IService1_GuardarInfraestructuraApartamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GuardarInfraestructuraApartamentoResponse" message="tns:IService1_GuardarInfraestructuraApartamento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarInfraestructuraDetalle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GuardarInfraestructuraDetalle" message="tns:IService1_GuardarInfraestructuraDetalle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GuardarInfraestructuraDetalleResponse" message="tns:IService1_GuardarInfraestructuraDetalle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInfraestructuraApartamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetInfraestructuraApartamento" message="tns:IService1_GetInfraestructuraApartamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetInfraestructuraApartamentoResponse" message="tns:IService1_GetInfraestructuraApartamento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListServicios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetListServicios" message="tns:IService1_GetListServicios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetListServiciosResponse" message="tns:IService1_GetListServicios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListServicioApartamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetListServicioApartamento" message="tns:IService1_GetListServicioApartamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetListServicioApartamentoResponse" message="tns:IService1_GetListServicioApartamento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarServicioApartamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GuardarServicioApartamento" message="tns:IService1_GuardarServicioApartamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GuardarServicioApartamentoResponse" message="tns:IService1_GuardarServicioApartamento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarServicio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GuardarServicio" message="tns:IService1_GuardarServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GuardarServicioResponse" message="tns:IService1_GuardarServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarFotosApartamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GuardarFotosApartamento" message="tns:IService1_GuardarFotosApartamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GuardarFotosApartamentoResponse" message="tns:IService1_GuardarFotosApartamento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFotosApartamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetFotosApartamento" message="tns:IService1_GetFotosApartamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetFotosApartamentoResponse" message="tns:IService1_GetFotosApartamento_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTodosLosEdificios">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetTodosLosEdificios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDictionaryUbicaciones">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDictionaryUbicaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarEdificio">
+      <soap:operation soapAction="http://tempuri.org/IService1/GuardarEdificio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEdificio">
+      <soap:operation soapAction="http://tempuri.org/IService1/EliminarEdificio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEdificio">
+      <soap:operation soapAction="http://tempuri.org/IService1/ModificarEdificio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApartamentosByIdEdificio">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetApartamentosByIdEdificio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApartamentosAll">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetApartamentosAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarApartamento">
+      <soap:operation soapAction="http://tempuri.org/IService1/GuardarApartamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDictionaryInfraestructuras">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDictionaryInfraestructuras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarInfraestructuraApartamento">
+      <soap:operation soapAction="http://tempuri.org/IService1/GuardarInfraestructuraApartamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarInfraestructuraDetalle">
+      <soap:operation soapAction="http://tempuri.org/IService1/GuardarInfraestructuraDetalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfraestructuraApartamento">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetInfraestructuraApartamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListServicios">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetListServicios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListServicioApartamento">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetListServicioApartamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarServicioApartamento">
+      <soap:operation soapAction="http://tempuri.org/IService1/GuardarServicioApartamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarServicio">
+      <soap:operation soapAction="http://tempuri.org/IService1/GuardarServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarFotosApartamento">
+      <soap:operation soapAction="http://tempuri.org/IService1/GuardarFotosApartamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFotosApartamento">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetFotosApartamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:2360/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

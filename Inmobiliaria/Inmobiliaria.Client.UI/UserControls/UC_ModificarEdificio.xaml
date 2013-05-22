@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Inmobiliaria.Client.UI.UserControls.UC_ModificarEdificio"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" Height="180" Width="600" >
+    <Grid Name="main">
+        <Canvas >
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="180"/>
+                </Grid.ColumnDefinitions>
+                <!-- Assumes MVVM and you wish to bind to properties and commands -->
+                <Label Content="Nombre" Grid.Row="1" HorizontalContentAlignment="Right" />
+                <TextBox  Text="{Binding Nombre}" Grid.Row="1" Grid.Column="1" />
+                <Label Content="Año de contruccion" Grid.Row="2" HorizontalContentAlignment="Right" />
+                <TextBox  Text="{Binding A_Contruccion}" Grid.Row="2" Grid.Column="1"/>
+                <Label Content="N de Plantas" Grid.Row="3" HorizontalContentAlignment="Right" />
+                <TextBox  Text="{Binding N_Plantas}" Grid.Row="3" Grid.Column="1"/>
+                <Label Content="Mas Informacion" Grid.Row="4" HorizontalContentAlignment="Right" />
+                <TextBox  Text="{Binding Inf_Adicional}" Grid.Row="4" Grid.Column="1"/>
+                <Image Grid.Column="2" Grid.RowSpan="5" Source="{Binding mainfoto}" Stretch="Fill" />               
+            </Grid>
+        </Canvas>
+    </Grid>
+</UserControl>

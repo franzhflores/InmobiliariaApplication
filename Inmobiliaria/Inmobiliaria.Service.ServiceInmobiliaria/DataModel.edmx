@@ -1,0 +1,1450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="INMOBILIARIAModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="INMOBILIARIAModelStoreContainer">
+          <EntitySet Name="Apartamento" EntityType="INMOBILIARIAModel.Store.Apartamento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Casa" EntityType="INMOBILIARIAModel.Store.Casa" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Edificio" EntityType="INMOBILIARIAModel.Store.Edificio" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Edificio_Detalle" EntityType="INMOBILIARIAModel.Store.Edificio_Detalle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Fotos_Apartamento" EntityType="INMOBILIARIAModel.Store.Fotos_Apartamento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Infraestructura" EntityType="INMOBILIARIAModel.Store.Infraestructura" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Infraestructura_Apartamento" EntityType="INMOBILIARIAModel.Store.Infraestructura_Apartamento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Infraestructura_Casa" EntityType="INMOBILIARIAModel.Store.Infraestructura_Casa" store:Type="Tables" store:Schema="dbo" store:Name="Infraestructura_Casa">
+            <DefiningQuery>SELECT 
+      [Infraestructura_Casa].[Id] AS [Id], 
+      [Infraestructura_Casa].[Id_casa] AS [Id_casa], 
+      [Infraestructura_Casa].[Id_Infrac_Detalle] AS [Id_Infrac_Detalle]
+      FROM [dbo].[Infraestructura_Casa] AS [Infraestructura_Casa]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Infraestructura_Detalle" EntityType="INMOBILIARIAModel.Store.Infraestructura_Detalle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Servcio_Apartamento" EntityType="INMOBILIARIAModel.Store.Servcio_Apartamento" store:Type="Tables" store:Schema="dbo" store:Name="Servcio_Apartamento">
+            <DefiningQuery>SELECT 
+      [Servcio_Apartamento].[Id] AS [Id], 
+      [Servcio_Apartamento].[Id_Apartemento] AS [Id_Apartemento], 
+      [Servcio_Apartamento].[Id_Servicio] AS [Id_Servicio]
+      FROM [dbo].[Servcio_Apartamento] AS [Servcio_Apartamento]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Servicio_Casa" EntityType="INMOBILIARIAModel.Store.Servicio_Casa" store:Type="Tables" store:Schema="dbo" store:Name="Servicio_Casa">
+            <DefiningQuery>SELECT 
+      [Servicio_Casa].[Id] AS [Id], 
+      [Servicio_Casa].[Id_casa] AS [Id_casa], 
+      [Servicio_Casa].[Id_servicio] AS [Id_servicio]
+      FROM [dbo].[Servicio_Casa] AS [Servicio_Casa]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Servicios" EntityType="INMOBILIARIAModel.Store.Servicios" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="INMOBILIARIAModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Ubicacion" EntityType="INMOBILIARIAModel.Store.Ubicacion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Ubicacion_Detalle" EntityType="INMOBILIARIAModel.Store.Ubicacion_Detalle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VistaDetailEdificio" EntityType="INMOBILIARIAModel.Store.VistaDetailEdificio" store:Type="Views" store:Schema="dbo" store:Name="VistaDetailEdificio">
+            <DefiningQuery>SELECT 
+      [VistaDetailEdificio].[Id] AS [Id], 
+      [VistaDetailEdificio].[Nombre] AS [Nombre], 
+      [VistaDetailEdificio].[A_Contruccion] AS [A_Contruccion], 
+      [VistaDetailEdificio].[N_Plantas] AS [N_Plantas], 
+      [VistaDetailEdificio].[mainFoto] AS [mainFoto], 
+      [VistaDetailEdificio].[Provincia] AS [Provincia], 
+      [VistaDetailEdificio].[Zona] AS [Zona], 
+      [VistaDetailEdificio].[Direccion] AS [Direccion], 
+      [VistaDetailEdificio].[Inf_Adicional] AS [Inf_Adicional]
+      FROM [dbo].[VistaDetailEdificio] AS [VistaDetailEdificio]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Apartamento_Edificio" Association="INMOBILIARIAModel.Store.FK_Apartamento_Edificio">
+            <End Role="Edificio" EntitySet="Edificio" />
+            <End Role="Apartamento" EntitySet="Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Casa_Ubicacion_Detalle" Association="INMOBILIARIAModel.Store.FK_Casa_Ubicacion_Detalle">
+            <End Role="Ubicacion_Detalle" EntitySet="Ubicacion_Detalle" />
+            <End Role="Casa" EntitySet="Casa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Edificio_Detalle_Edificio" Association="INMOBILIARIAModel.Store.FK_Edificio_Detalle_Edificio">
+            <End Role="Edificio" EntitySet="Edificio" />
+            <End Role="Edificio_Detalle" EntitySet="Edificio_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Edificio_Ubicacion_Detalle" Association="INMOBILIARIAModel.Store.FK_Edificio_Ubicacion_Detalle">
+            <End Role="Ubicacion_Detalle" EntitySet="Ubicacion_Detalle" />
+            <End Role="Edificio" EntitySet="Edificio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_Apartamento_Apartamento" Association="INMOBILIARIAModel.Store.FK_Fotos_Apartamento_Apartamento">
+            <End Role="Apartamento" EntitySet="Apartamento" />
+            <End Role="Fotos_Apartamento" EntitySet="Fotos_Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_Apartamento_Infraestructura_Detalle" Association="INMOBILIARIAModel.Store.FK_Fotos_Apartamento_Infraestructura_Detalle">
+            <End Role="Infraestructura_Detalle" EntitySet="Infraestructura_Detalle" />
+            <End Role="Fotos_Apartamento" EntitySet="Fotos_Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Infraestructura_Apartamento_Apartamento" Association="INMOBILIARIAModel.Store.FK_Infraestructura_Apartamento_Apartamento">
+            <End Role="Apartamento" EntitySet="Apartamento" />
+            <End Role="Infraestructura_Apartamento" EntitySet="Infraestructura_Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Infraestructura_Apartamento_Infraestructura_Detalle" Association="INMOBILIARIAModel.Store.FK_Infraestructura_Apartamento_Infraestructura_Detalle">
+            <End Role="Infraestructura_Detalle" EntitySet="Infraestructura_Detalle" />
+            <End Role="Infraestructura_Apartamento" EntitySet="Infraestructura_Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Infraestructura_Casa_Casa" Association="INMOBILIARIAModel.Store.FK_Infraestructura_Casa_Casa">
+            <End Role="Casa" EntitySet="Casa" />
+            <End Role="Infraestructura_Casa" EntitySet="Infraestructura_Casa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Infraestructura_Casa_Infraestructura_Detalle" Association="INMOBILIARIAModel.Store.FK_Infraestructura_Casa_Infraestructura_Detalle">
+            <End Role="Infraestructura_Detalle" EntitySet="Infraestructura_Detalle" />
+            <End Role="Infraestructura_Casa" EntitySet="Infraestructura_Casa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Infraestructura_Detalle_Infraestructura" Association="INMOBILIARIAModel.Store.FK_Infraestructura_Detalle_Infraestructura">
+            <End Role="Infraestructura" EntitySet="Infraestructura" />
+            <End Role="Infraestructura_Detalle" EntitySet="Infraestructura_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servcio_Apartamento_Apartamento" Association="INMOBILIARIAModel.Store.FK_Servcio_Apartamento_Apartamento">
+            <End Role="Apartamento" EntitySet="Apartamento" />
+            <End Role="Servcio_Apartamento" EntitySet="Servcio_Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servcio_Apartamento_Servicios" Association="INMOBILIARIAModel.Store.FK_Servcio_Apartamento_Servicios">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Servcio_Apartamento" EntitySet="Servcio_Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Casa_Casa" Association="INMOBILIARIAModel.Store.FK_Servicio_Casa_Casa">
+            <End Role="Casa" EntitySet="Casa" />
+            <End Role="Servicio_Casa" EntitySet="Servicio_Casa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Casa_Servicios" Association="INMOBILIARIAModel.Store.FK_Servicio_Casa_Servicios">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Servicio_Casa" EntitySet="Servicio_Casa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ubicacion_Detalle_Ubicacion" Association="INMOBILIARIAModel.Store.FK_Ubicacion_Detalle_Ubicacion">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="Ubicacion_Detalle" EntitySet="Ubicacion_Detalle" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Apartamento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_Edificio" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="N_Piso" Type="int" Nullable="false" />
+          <Property Name="N_Puerta" Type="int" Nullable="false" />
+          <Property Name="Bloque" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Casa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Tipo" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Mts2" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Id_Ubi_Detalle" Type="varchar" Nullable="false" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="Edificio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_Ubi_Detalle" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="A_Contruccion" Type="datetime" Nullable="false" />
+          <Property Name="N_Plantas" Type="int" />
+          <Property Name="Inf_Adicional" Type="varchar(max)" />
+          <Property Name="mainfoto" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Edificio_Detalle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_Edificio" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Foto" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Fotos_Apartamento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Foto" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Id_Infra_Detalle" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_Apartamento" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Infraestructura">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Infraestructura_Apartamento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_Apartamento" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_Infrac_Detalle" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Cantidad" Type="int" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'INMOBILIARIA.dbo.Infraestructura_Casa' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="Infraestructura_Casa">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Id_casa" />
+            <PropertyRef Name="Id_Infrac_Detalle" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_casa" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_Infrac_Detalle" Type="varchar" Nullable="false" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="Infraestructura_Detalle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_Infra" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Tamano" Type="varchar" Nullable="false" MaxLength="4" />
+          <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'INMOBILIARIA.dbo.Servcio_Apartamento' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="Servcio_Apartamento">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Id_Apartemento" />
+            <PropertyRef Name="Id_Servicio" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_Apartemento" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_Servicio" Type="varchar" Nullable="false" MaxLength="6" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'INMOBILIARIA.dbo.Servicio_Casa' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="Servicio_Casa">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Id_casa" />
+            <PropertyRef Name="Id_servicio" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_casa" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_servicio" Type="varchar" Nullable="false" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="Servicios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Tipo" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Ubicacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Provincia" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ubicacion_Detalle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Id_Ubicacion" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Zona" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Direccion" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'INMOBILIARIA.dbo.VistaDetailEdificio' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="VistaDetailEdificio">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="A_Contruccion" />
+            <PropertyRef Name="Provincia" />
+            <PropertyRef Name="Zona" />
+            <PropertyRef Name="Direccion" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="A_Contruccion" Type="datetime" Nullable="false" />
+          <Property Name="N_Plantas" Type="int" />
+          <Property Name="mainFoto" Type="varchar" MaxLength="150" />
+          <Property Name="Provincia" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Zona" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Direccion" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Inf_Adicional" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Apartamento_Edificio">
+          <End Role="Edificio" Type="INMOBILIARIAModel.Store.Edificio" Multiplicity="1" />
+          <End Role="Apartamento" Type="INMOBILIARIAModel.Store.Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edificio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apartamento">
+              <PropertyRef Name="Id_Edificio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Casa_Ubicacion_Detalle">
+          <End Role="Ubicacion_Detalle" Type="INMOBILIARIAModel.Store.Ubicacion_Detalle" Multiplicity="1" />
+          <End Role="Casa" Type="INMOBILIARIAModel.Store.Casa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion_Detalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Casa">
+              <PropertyRef Name="Id_Ubi_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Edificio_Detalle_Edificio">
+          <End Role="Edificio" Type="INMOBILIARIAModel.Store.Edificio" Multiplicity="1" />
+          <End Role="Edificio_Detalle" Type="INMOBILIARIAModel.Store.Edificio_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edificio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Edificio_Detalle">
+              <PropertyRef Name="Id_Edificio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Edificio_Ubicacion_Detalle">
+          <End Role="Ubicacion_Detalle" Type="INMOBILIARIAModel.Store.Ubicacion_Detalle" Multiplicity="1" />
+          <End Role="Edificio" Type="INMOBILIARIAModel.Store.Edificio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion_Detalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Edificio">
+              <PropertyRef Name="Id_Ubi_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_Apartamento_Apartamento">
+          <End Role="Apartamento" Type="INMOBILIARIAModel.Store.Apartamento" Multiplicity="1" />
+          <End Role="Fotos_Apartamento" Type="INMOBILIARIAModel.Store.Fotos_Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartamento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fotos_Apartamento">
+              <PropertyRef Name="Id_Apartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_Apartamento_Infraestructura_Detalle">
+          <End Role="Infraestructura_Detalle" Type="INMOBILIARIAModel.Store.Infraestructura_Detalle" Multiplicity="1" />
+          <End Role="Fotos_Apartamento" Type="INMOBILIARIAModel.Store.Fotos_Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infraestructura_Detalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fotos_Apartamento">
+              <PropertyRef Name="Id_Infra_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Infraestructura_Apartamento_Apartamento">
+          <End Role="Apartamento" Type="INMOBILIARIAModel.Store.Apartamento" Multiplicity="1" />
+          <End Role="Infraestructura_Apartamento" Type="INMOBILIARIAModel.Store.Infraestructura_Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartamento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Infraestructura_Apartamento">
+              <PropertyRef Name="Id_Apartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Infraestructura_Apartamento_Infraestructura_Detalle">
+          <End Role="Infraestructura_Detalle" Type="INMOBILIARIAModel.Store.Infraestructura_Detalle" Multiplicity="1" />
+          <End Role="Infraestructura_Apartamento" Type="INMOBILIARIAModel.Store.Infraestructura_Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infraestructura_Detalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Infraestructura_Apartamento">
+              <PropertyRef Name="Id_Infrac_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Infraestructura_Casa_Casa">
+          <End Role="Casa" Type="INMOBILIARIAModel.Store.Casa" Multiplicity="1" />
+          <End Role="Infraestructura_Casa" Type="INMOBILIARIAModel.Store.Infraestructura_Casa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Casa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Infraestructura_Casa">
+              <PropertyRef Name="Id_casa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Infraestructura_Casa_Infraestructura_Detalle">
+          <End Role="Infraestructura_Detalle" Type="INMOBILIARIAModel.Store.Infraestructura_Detalle" Multiplicity="1" />
+          <End Role="Infraestructura_Casa" Type="INMOBILIARIAModel.Store.Infraestructura_Casa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infraestructura_Detalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Infraestructura_Casa">
+              <PropertyRef Name="Id_Infrac_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Infraestructura_Detalle_Infraestructura">
+          <End Role="Infraestructura" Type="INMOBILIARIAModel.Store.Infraestructura" Multiplicity="1" />
+          <End Role="Infraestructura_Detalle" Type="INMOBILIARIAModel.Store.Infraestructura_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infraestructura">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Infraestructura_Detalle">
+              <PropertyRef Name="Id_Infra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servcio_Apartamento_Apartamento">
+          <End Role="Apartamento" Type="INMOBILIARIAModel.Store.Apartamento" Multiplicity="1" />
+          <End Role="Servcio_Apartamento" Type="INMOBILIARIAModel.Store.Servcio_Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartamento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servcio_Apartamento">
+              <PropertyRef Name="Id_Apartemento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servcio_Apartamento_Servicios">
+          <End Role="Servicios" Type="INMOBILIARIAModel.Store.Servicios" Multiplicity="1" />
+          <End Role="Servcio_Apartamento" Type="INMOBILIARIAModel.Store.Servcio_Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servcio_Apartamento">
+              <PropertyRef Name="Id_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Casa_Casa">
+          <End Role="Casa" Type="INMOBILIARIAModel.Store.Casa" Multiplicity="1" />
+          <End Role="Servicio_Casa" Type="INMOBILIARIAModel.Store.Servicio_Casa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Casa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servicio_Casa">
+              <PropertyRef Name="Id_casa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Casa_Servicios">
+          <End Role="Servicios" Type="INMOBILIARIAModel.Store.Servicios" Multiplicity="1" />
+          <End Role="Servicio_Casa" Type="INMOBILIARIAModel.Store.Servicio_Casa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servicio_Casa">
+              <PropertyRef Name="Id_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ubicacion_Detalle_Ubicacion">
+          <End Role="Ubicacion" Type="INMOBILIARIAModel.Store.Ubicacion" Multiplicity="1" />
+          <End Role="Ubicacion_Detalle" Type="INMOBILIARIAModel.Store.Ubicacion_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ubicacion_Detalle">
+              <PropertyRef Name="Id_Ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="fun_GetIDUbicacion" ReturnType="varchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="provincia" Type="varchar" Mode="In" />
+          <Parameter Name="zona" Type="varchar" Mode="In" />
+          <Parameter Name="direccion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertApartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Edificio" Type="varchar" Mode="In" />
+          <Parameter Name="N_Piso" Type="int" Mode="In" />
+          <Parameter Name="N_Puerta" Type="int" Mode="In" />
+          <Parameter Name="Bloque" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertCasa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Tipo" Type="varchar" Mode="In" />
+          <Parameter Name="M2" Type="varchar" Mode="In" />
+          <Parameter Name="Id_UbiDetalle" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertDetalleUbicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Id_ubicacion" Type="varchar" Mode="In" />
+          <Parameter Name="Zona" Type="varchar" Mode="In" />
+          <Parameter Name="Direccion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertEdificio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Ubicacion" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="A_Construccion" Type="datetime" Mode="In" />
+          <Parameter Name="N_Plantas" Type="int" Mode="In" />
+          <Parameter Name="Inf_Adicional" Type="varchar(max)" Mode="In" />
+          <Parameter Name="mainFoto" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertFotoEdificio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Edificio" Type="varchar" Mode="In" />
+          <Parameter Name="foto" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertFotosApartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Foto" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Infra_detalle" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Apartamento" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="InsertInfra_Apartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Apart" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Infra_Apart" Type="varchar" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertInfraCasa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_casa" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Infrastructura" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertInfraDetalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Infrastructura" Type="varchar" Mode="In" />
+          <Parameter Name="Tamano" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertInfrastructura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Tamano" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="InsertServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Tipo" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertServicioApartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Apartamento" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Servicio" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertServicioCasa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Casa" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Servicio" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertUbicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Provincia" Type="varchar" Mode="In" />
+          <Parameter Name="Zona" Type="varchar" Mode="In" />
+          <Parameter Name="Direccion" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="msp_getAllEdificio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="msp_ModificarEdificio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Ubicacion" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="A_Construccion" Type="datetime" Mode="In" />
+          <Parameter Name="N_Plantas" Type="int" Mode="In" />
+          <Parameter Name="Inf_Adicional" Type="varchar(max)" Mode="In" />
+          <Parameter Name="mainFoto" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="nf_Incrementar_Id" ReturnType="varchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lenCad" Type="int" Mode="In" />
+          <Parameter Name="AllCad" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_Apartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Edificio" Type="varchar" Mode="In" />
+          <Parameter Name="N_Piso" Type="int" Mode="In" />
+          <Parameter Name="N_Puerta" Type="int" Mode="In" />
+          <Parameter Name="Bloque" Type="varchar" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Casa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Tipo" Type="varchar" Mode="In" />
+          <Parameter Name="M2" Type="varchar" Mode="In" />
+          <Parameter Name="Id_UbiDetalle" Type="varchar" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Edificio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Ubi_Detalle" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="A_Contruccion" Type="datetime" Mode="In" />
+          <Parameter Name="N_Plantas" Type="int" Mode="In" />
+          <Parameter Name="Inf_Adicional" Type="varchar" Mode="In" />
+          <Parameter Name="mainfoto" Type="varchar" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Edificio_Detalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Edificio" Type="varchar" Mode="In" />
+          <Parameter Name="Foto" Type="varchar" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_EliminarEdificio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Edificio" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Infraestructura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Infraestructura_Apartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Apartamento" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Infrac_Detalle" Type="varchar" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Infraestructura_Casa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Id_casa" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Infrac_Detalle" Type="varchar" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Infraestructura_Detalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Infra" Type="varchar" Mode="In" />
+          <Parameter Name="Tamano" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar(max)" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Servcio_Apartamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Apartemento" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Servicio" Type="varchar" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Servicio_Casa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Id_casa" Type="varchar" Mode="In" />
+          <Parameter Name="Id_servicio" Type="varchar" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Servicios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Tipo" Type="varchar" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Ubicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Provincia" Type="varchar" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Ubicacion_Detalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Ubicacion" Type="varchar" Mode="In" />
+          <Parameter Name="Zona" Type="varchar" Mode="In" />
+          <Parameter Name="Direccion" Type="varchar" Mode="In" />
+          <Parameter Name="TipoOperacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="INMOBILIARIAModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="INMOBILIARIAEntitiesV1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Apartamento" EntityType="INMOBILIARIAModel.Apartamento" />
+          <EntitySet Name="Casa" EntityType="INMOBILIARIAModel.Casa" />
+          <EntitySet Name="Edificio" EntityType="INMOBILIARIAModel.Edificio" />
+          <EntitySet Name="Edificio_Detalle" EntityType="INMOBILIARIAModel.Edificio_Detalle" />
+          <EntitySet Name="Fotos_Apartamento" EntityType="INMOBILIARIAModel.Fotos_Apartamento" />
+          <EntitySet Name="Infraestructura" EntityType="INMOBILIARIAModel.Infraestructura" />
+          <EntitySet Name="Infraestructura_Apartamento" EntityType="INMOBILIARIAModel.Infraestructura_Apartamento" />
+          <EntitySet Name="Infraestructura_Casa" EntityType="INMOBILIARIAModel.Infraestructura_Casa" />
+          <EntitySet Name="Infraestructura_Detalle" EntityType="INMOBILIARIAModel.Infraestructura_Detalle" />
+          <EntitySet Name="Servcio_Apartamento" EntityType="INMOBILIARIAModel.Servcio_Apartamento" />
+          <EntitySet Name="Servicio_Casa" EntityType="INMOBILIARIAModel.Servicio_Casa" />
+          <EntitySet Name="Servicios" EntityType="INMOBILIARIAModel.Servicios" />
+          <EntitySet Name="sysdiagrams" EntityType="INMOBILIARIAModel.sysdiagrams" />
+          <EntitySet Name="Ubicacion" EntityType="INMOBILIARIAModel.Ubicacion" />
+          <EntitySet Name="Ubicacion_Detalle" EntityType="INMOBILIARIAModel.Ubicacion_Detalle" />
+          <EntitySet Name="VistaDetailEdificio" EntityType="INMOBILIARIAModel.VistaDetailEdificio" />
+          <AssociationSet Name="FK_Apartamento_Edificio" Association="INMOBILIARIAModel.FK_Apartamento_Edificio">
+            <End Role="Edificio" EntitySet="Edificio" />
+            <End Role="Apartamento" EntitySet="Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_Apartamento_Apartamento" Association="INMOBILIARIAModel.FK_Fotos_Apartamento_Apartamento">
+            <End Role="Apartamento" EntitySet="Apartamento" />
+            <End Role="Fotos_Apartamento" EntitySet="Fotos_Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Infraestructura_Apartamento_Apartamento" Association="INMOBILIARIAModel.FK_Infraestructura_Apartamento_Apartamento">
+            <End Role="Apartamento" EntitySet="Apartamento" />
+            <End Role="Infraestructura_Apartamento" EntitySet="Infraestructura_Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servcio_Apartamento_Apartamento" Association="INMOBILIARIAModel.FK_Servcio_Apartamento_Apartamento">
+            <End Role="Apartamento" EntitySet="Apartamento" />
+            <End Role="Servcio_Apartamento" EntitySet="Servcio_Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Casa_Ubicacion_Detalle" Association="INMOBILIARIAModel.FK_Casa_Ubicacion_Detalle">
+            <End Role="Ubicacion_Detalle" EntitySet="Ubicacion_Detalle" />
+            <End Role="Casa" EntitySet="Casa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Infraestructura_Casa_Casa" Association="INMOBILIARIAModel.FK_Infraestructura_Casa_Casa">
+            <End Role="Casa" EntitySet="Casa" />
+            <End Role="Infraestructura_Casa" EntitySet="Infraestructura_Casa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Casa_Casa" Association="INMOBILIARIAModel.FK_Servicio_Casa_Casa">
+            <End Role="Casa" EntitySet="Casa" />
+            <End Role="Servicio_Casa" EntitySet="Servicio_Casa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Edificio_Detalle_Edificio" Association="INMOBILIARIAModel.FK_Edificio_Detalle_Edificio">
+            <End Role="Edificio" EntitySet="Edificio" />
+            <End Role="Edificio_Detalle" EntitySet="Edificio_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Edificio_Ubicacion_Detalle" Association="INMOBILIARIAModel.FK_Edificio_Ubicacion_Detalle">
+            <End Role="Ubicacion_Detalle" EntitySet="Ubicacion_Detalle" />
+            <End Role="Edificio" EntitySet="Edificio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_Apartamento_Infraestructura_Detalle" Association="INMOBILIARIAModel.FK_Fotos_Apartamento_Infraestructura_Detalle">
+            <End Role="Infraestructura_Detalle" EntitySet="Infraestructura_Detalle" />
+            <End Role="Fotos_Apartamento" EntitySet="Fotos_Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Infraestructura_Detalle_Infraestructura" Association="INMOBILIARIAModel.FK_Infraestructura_Detalle_Infraestructura">
+            <End Role="Infraestructura" EntitySet="Infraestructura" />
+            <End Role="Infraestructura_Detalle" EntitySet="Infraestructura_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Infraestructura_Apartamento_Infraestructura_Detalle" Association="INMOBILIARIAModel.FK_Infraestructura_Apartamento_Infraestructura_Detalle">
+            <End Role="Infraestructura_Detalle" EntitySet="Infraestructura_Detalle" />
+            <End Role="Infraestructura_Apartamento" EntitySet="Infraestructura_Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Infraestructura_Casa_Infraestructura_Detalle" Association="INMOBILIARIAModel.FK_Infraestructura_Casa_Infraestructura_Detalle">
+            <End Role="Infraestructura_Detalle" EntitySet="Infraestructura_Detalle" />
+            <End Role="Infraestructura_Casa" EntitySet="Infraestructura_Casa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servcio_Apartamento_Servicios" Association="INMOBILIARIAModel.FK_Servcio_Apartamento_Servicios">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Servcio_Apartamento" EntitySet="Servcio_Apartamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Casa_Servicios" Association="INMOBILIARIAModel.FK_Servicio_Casa_Servicios">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Servicio_Casa" EntitySet="Servicio_Casa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ubicacion_Detalle_Ubicacion" Association="INMOBILIARIAModel.FK_Ubicacion_Detalle_Ubicacion">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="Ubicacion_Detalle" EntitySet="Ubicacion_Detalle" />
+          </AssociationSet>
+          <FunctionImport Name="InsertApartamento" ReturnType="Collection(String)">
+            <Parameter Name="Id_Edificio" Mode="In" Type="String" />
+            <Parameter Name="N_Piso" Mode="In" Type="Int32" />
+            <Parameter Name="N_Puerta" Mode="In" Type="Int32" />
+            <Parameter Name="Bloque" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertEdificio" ReturnType="Collection(String)">
+            <Parameter Name="Id_Ubicacion" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="A_Construccion" Mode="In" Type="DateTime" />
+            <Parameter Name="N_Plantas" Mode="In" Type="Int32" />
+            <Parameter Name="Inf_Adicional" Mode="In" Type="String" />
+            <Parameter Name="mainFoto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertFotosApartamento" ReturnType="Collection(String)">
+            <Parameter Name="Foto" Mode="In" Type="String" />
+            <Parameter Name="Id_Infra_detalle" Mode="In" Type="String" />
+            <Parameter Name="Id_Apartamento" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertServicioApartamento" ReturnType="Collection(String)">
+            <Parameter Name="Id_Apartamento" Mode="In" Type="String" />
+            <Parameter Name="Id_Servicio" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertInfra_Apartamento" ReturnType="Collection(String)">
+            <Parameter Name="Id_Apart" Mode="In" Type="String" />
+            <Parameter Name="Id_Infra_Apart" Mode="In" Type="String" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertInfraDetalle" ReturnType="Collection(String)">
+            <Parameter Name="Id_Infrastructura" Mode="In" Type="String" />
+            <Parameter Name="Tamano" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertServicio" ReturnType="Collection(String)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Tipo" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="msp_ModificarEdificio" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="String" />
+            <Parameter Name="Id_Ubicacion" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="A_Construccion" Mode="In" Type="DateTime" />
+            <Parameter Name="N_Plantas" Mode="In" Type="Int32" />
+            <Parameter Name="Inf_Adicional" Mode="In" Type="String" />
+            <Parameter Name="mainFoto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EliminarEdificio" ReturnType="Collection(Int32)">
+            <Parameter Name="Id_Edificio" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Apartamento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Edificio" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="N_Piso" Type="Int32" Nullable="false" />
+          <Property Name="N_Puerta" Type="Int32" Nullable="false" />
+          <Property Name="Bloque" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Edificio" Relationship="INMOBILIARIAModel.FK_Apartamento_Edificio" FromRole="Apartamento" ToRole="Edificio" />
+          <NavigationProperty Name="Fotos_Apartamento" Relationship="INMOBILIARIAModel.FK_Fotos_Apartamento_Apartamento" FromRole="Apartamento" ToRole="Fotos_Apartamento" />
+          <NavigationProperty Name="Infraestructura_Apartamento" Relationship="INMOBILIARIAModel.FK_Infraestructura_Apartamento_Apartamento" FromRole="Apartamento" ToRole="Infraestructura_Apartamento" />
+          <NavigationProperty Name="Servcio_Apartamento" Relationship="INMOBILIARIAModel.FK_Servcio_Apartamento_Apartamento" FromRole="Apartamento" ToRole="Servcio_Apartamento" />
+        </EntityType>
+        <EntityType Name="Casa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Mts2" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Ubi_Detalle" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Ubicacion_Detalle" Relationship="INMOBILIARIAModel.FK_Casa_Ubicacion_Detalle" FromRole="Casa" ToRole="Ubicacion_Detalle" />
+          <NavigationProperty Name="Infraestructura_Casa" Relationship="INMOBILIARIAModel.FK_Infraestructura_Casa_Casa" FromRole="Casa" ToRole="Infraestructura_Casa" />
+          <NavigationProperty Name="Servicio_Casa" Relationship="INMOBILIARIAModel.FK_Servicio_Casa_Casa" FromRole="Casa" ToRole="Servicio_Casa" />
+        </EntityType>
+        <EntityType Name="Edificio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Ubi_Detalle" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="A_Contruccion" Type="DateTime" Nullable="false" />
+          <Property Name="N_Plantas" Type="Int32" />
+          <Property Name="Inf_Adicional" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="mainfoto" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Apartamento" Relationship="INMOBILIARIAModel.FK_Apartamento_Edificio" FromRole="Edificio" ToRole="Apartamento" />
+          <NavigationProperty Name="Edificio_Detalle" Relationship="INMOBILIARIAModel.FK_Edificio_Detalle_Edificio" FromRole="Edificio" ToRole="Edificio_Detalle" />
+          <NavigationProperty Name="Ubicacion_Detalle" Relationship="INMOBILIARIAModel.FK_Edificio_Ubicacion_Detalle" FromRole="Edificio" ToRole="Ubicacion_Detalle" />
+        </EntityType>
+        <EntityType Name="Edificio_Detalle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Edificio" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Foto" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Edificio" Relationship="INMOBILIARIAModel.FK_Edificio_Detalle_Edificio" FromRole="Edificio_Detalle" ToRole="Edificio" />
+        </EntityType>
+        <EntityType Name="Fotos_Apartamento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Foto" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Infra_Detalle" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Apartamento" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Apartamento" Relationship="INMOBILIARIAModel.FK_Fotos_Apartamento_Apartamento" FromRole="Fotos_Apartamento" ToRole="Apartamento" />
+          <NavigationProperty Name="Infraestructura_Detalle" Relationship="INMOBILIARIAModel.FK_Fotos_Apartamento_Infraestructura_Detalle" FromRole="Fotos_Apartamento" ToRole="Infraestructura_Detalle" />
+        </EntityType>
+        <EntityType Name="Infraestructura">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Infraestructura_Detalle" Relationship="INMOBILIARIAModel.FK_Infraestructura_Detalle_Infraestructura" FromRole="Infraestructura" ToRole="Infraestructura_Detalle" />
+        </EntityType>
+        <EntityType Name="Infraestructura_Apartamento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Apartamento" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Infrac_Detalle" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Cantidad" Type="Int32" />
+          <NavigationProperty Name="Apartamento" Relationship="INMOBILIARIAModel.FK_Infraestructura_Apartamento_Apartamento" FromRole="Infraestructura_Apartamento" ToRole="Apartamento" />
+          <NavigationProperty Name="Infraestructura_Detalle" Relationship="INMOBILIARIAModel.FK_Infraestructura_Apartamento_Infraestructura_Detalle" FromRole="Infraestructura_Apartamento" ToRole="Infraestructura_Detalle" />
+        </EntityType>
+        <EntityType Name="Infraestructura_Casa">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Id_casa" />
+            <PropertyRef Name="Id_Infrac_Detalle" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_casa" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Infrac_Detalle" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Casa" Relationship="INMOBILIARIAModel.FK_Infraestructura_Casa_Casa" FromRole="Infraestructura_Casa" ToRole="Casa" />
+          <NavigationProperty Name="Infraestructura_Detalle" Relationship="INMOBILIARIAModel.FK_Infraestructura_Casa_Infraestructura_Detalle" FromRole="Infraestructura_Casa" ToRole="Infraestructura_Detalle" />
+        </EntityType>
+        <EntityType Name="Infraestructura_Detalle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Infra" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Tamano" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Fotos_Apartamento" Relationship="INMOBILIARIAModel.FK_Fotos_Apartamento_Infraestructura_Detalle" FromRole="Infraestructura_Detalle" ToRole="Fotos_Apartamento" />
+          <NavigationProperty Name="Infraestructura" Relationship="INMOBILIARIAModel.FK_Infraestructura_Detalle_Infraestructura" FromRole="Infraestructura_Detalle" ToRole="Infraestructura" />
+          <NavigationProperty Name="Infraestructura_Apartamento" Relationship="INMOBILIARIAModel.FK_Infraestructura_Apartamento_Infraestructura_Detalle" FromRole="Infraestructura_Detalle" ToRole="Infraestructura_Apartamento" />
+          <NavigationProperty Name="Infraestructura_Casa" Relationship="INMOBILIARIAModel.FK_Infraestructura_Casa_Infraestructura_Detalle" FromRole="Infraestructura_Detalle" ToRole="Infraestructura_Casa" />
+        </EntityType>
+        <EntityType Name="Servcio_Apartamento">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Id_Apartemento" />
+            <PropertyRef Name="Id_Servicio" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Apartemento" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Servicio" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Apartamento" Relationship="INMOBILIARIAModel.FK_Servcio_Apartamento_Apartamento" FromRole="Servcio_Apartamento" ToRole="Apartamento" />
+          <NavigationProperty Name="Servicios" Relationship="INMOBILIARIAModel.FK_Servcio_Apartamento_Servicios" FromRole="Servcio_Apartamento" ToRole="Servicios" />
+        </EntityType>
+        <EntityType Name="Servicio_Casa">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Id_casa" />
+            <PropertyRef Name="Id_servicio" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_casa" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_servicio" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Casa" Relationship="INMOBILIARIAModel.FK_Servicio_Casa_Casa" FromRole="Servicio_Casa" ToRole="Casa" />
+          <NavigationProperty Name="Servicios" Relationship="INMOBILIARIAModel.FK_Servicio_Casa_Servicios" FromRole="Servicio_Casa" ToRole="Servicios" />
+        </EntityType>
+        <EntityType Name="Servicios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Servcio_Apartamento" Relationship="INMOBILIARIAModel.FK_Servcio_Apartamento_Servicios" FromRole="Servicios" ToRole="Servcio_Apartamento" />
+          <NavigationProperty Name="Servicio_Casa" Relationship="INMOBILIARIAModel.FK_Servicio_Casa_Servicios" FromRole="Servicios" ToRole="Servicio_Casa" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ubicacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Provincia" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Ubicacion_Detalle" Relationship="INMOBILIARIAModel.FK_Ubicacion_Detalle_Ubicacion" FromRole="Ubicacion" ToRole="Ubicacion_Detalle" />
+        </EntityType>
+        <EntityType Name="Ubicacion_Detalle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Id_Ubicacion" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Zona" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Casa" Relationship="INMOBILIARIAModel.FK_Casa_Ubicacion_Detalle" FromRole="Ubicacion_Detalle" ToRole="Casa" />
+          <NavigationProperty Name="Edificio" Relationship="INMOBILIARIAModel.FK_Edificio_Ubicacion_Detalle" FromRole="Ubicacion_Detalle" ToRole="Edificio" />
+          <NavigationProperty Name="Ubicacion" Relationship="INMOBILIARIAModel.FK_Ubicacion_Detalle_Ubicacion" FromRole="Ubicacion_Detalle" ToRole="Ubicacion" />
+        </EntityType>
+        <EntityType Name="VistaDetailEdificio">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="A_Contruccion" />
+            <PropertyRef Name="Provincia" />
+            <PropertyRef Name="Zona" />
+            <PropertyRef Name="Direccion" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="A_Contruccion" Type="DateTime" Nullable="false" />
+          <Property Name="N_Plantas" Type="Int32" />
+          <Property Name="mainFoto" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Provincia" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Zona" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Inf_Adicional" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Apartamento_Edificio">
+          <End Role="Edificio" Type="INMOBILIARIAModel.Edificio" Multiplicity="1" />
+          <End Role="Apartamento" Type="INMOBILIARIAModel.Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edificio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apartamento">
+              <PropertyRef Name="Id_Edificio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_Apartamento_Apartamento">
+          <End Role="Apartamento" Type="INMOBILIARIAModel.Apartamento" Multiplicity="1" />
+          <End Role="Fotos_Apartamento" Type="INMOBILIARIAModel.Fotos_Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartamento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fotos_Apartamento">
+              <PropertyRef Name="Id_Apartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Infraestructura_Apartamento_Apartamento">
+          <End Role="Apartamento" Type="INMOBILIARIAModel.Apartamento" Multiplicity="1" />
+          <End Role="Infraestructura_Apartamento" Type="INMOBILIARIAModel.Infraestructura_Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartamento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Infraestructura_Apartamento">
+              <PropertyRef Name="Id_Apartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servcio_Apartamento_Apartamento">
+          <End Role="Apartamento" Type="INMOBILIARIAModel.Apartamento" Multiplicity="1" />
+          <End Role="Servcio_Apartamento" Type="INMOBILIARIAModel.Servcio_Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartamento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servcio_Apartamento">
+              <PropertyRef Name="Id_Apartemento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Casa_Ubicacion_Detalle">
+          <End Role="Ubicacion_Detalle" Type="INMOBILIARIAModel.Ubicacion_Detalle" Multiplicity="1" />
+          <End Role="Casa" Type="INMOBILIARIAModel.Casa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion_Detalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Casa">
+              <PropertyRef Name="Id_Ubi_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Infraestructura_Casa_Casa">
+          <End Role="Casa" Type="INMOBILIARIAModel.Casa" Multiplicity="1" />
+          <End Role="Infraestructura_Casa" Type="INMOBILIARIAModel.Infraestructura_Casa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Casa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Infraestructura_Casa">
+              <PropertyRef Name="Id_casa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Casa_Casa">
+          <End Role="Casa" Type="INMOBILIARIAModel.Casa" Multiplicity="1" />
+          <End Role="Servicio_Casa" Type="INMOBILIARIAModel.Servicio_Casa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Casa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servicio_Casa">
+              <PropertyRef Name="Id_casa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Edificio_Detalle_Edificio">
+          <End Role="Edificio" Type="INMOBILIARIAModel.Edificio" Multiplicity="1" />
+          <End Role="Edificio_Detalle" Type="INMOBILIARIAModel.Edificio_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Edificio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Edificio_Detalle">
+              <PropertyRef Name="Id_Edificio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Edificio_Ubicacion_Detalle">
+          <End Role="Ubicacion_Detalle" Type="INMOBILIARIAModel.Ubicacion_Detalle" Multiplicity="1" />
+          <End Role="Edificio" Type="INMOBILIARIAModel.Edificio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion_Detalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Edificio">
+              <PropertyRef Name="Id_Ubi_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_Apartamento_Infraestructura_Detalle">
+          <End Role="Infraestructura_Detalle" Type="INMOBILIARIAModel.Infraestructura_Detalle" Multiplicity="1" />
+          <End Role="Fotos_Apartamento" Type="INMOBILIARIAModel.Fotos_Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infraestructura_Detalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fotos_Apartamento">
+              <PropertyRef Name="Id_Infra_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Infraestructura_Detalle_Infraestructura">
+          <End Role="Infraestructura" Type="INMOBILIARIAModel.Infraestructura" Multiplicity="1" />
+          <End Role="Infraestructura_Detalle" Type="INMOBILIARIAModel.Infraestructura_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infraestructura">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Infraestructura_Detalle">
+              <PropertyRef Name="Id_Infra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Infraestructura_Apartamento_Infraestructura_Detalle">
+          <End Role="Infraestructura_Detalle" Type="INMOBILIARIAModel.Infraestructura_Detalle" Multiplicity="1" />
+          <End Role="Infraestructura_Apartamento" Type="INMOBILIARIAModel.Infraestructura_Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infraestructura_Detalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Infraestructura_Apartamento">
+              <PropertyRef Name="Id_Infrac_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Infraestructura_Casa_Infraestructura_Detalle">
+          <End Role="Infraestructura_Detalle" Type="INMOBILIARIAModel.Infraestructura_Detalle" Multiplicity="1" />
+          <End Role="Infraestructura_Casa" Type="INMOBILIARIAModel.Infraestructura_Casa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infraestructura_Detalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Infraestructura_Casa">
+              <PropertyRef Name="Id_Infrac_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servcio_Apartamento_Servicios">
+          <End Role="Servicios" Type="INMOBILIARIAModel.Servicios" Multiplicity="1" />
+          <End Role="Servcio_Apartamento" Type="INMOBILIARIAModel.Servcio_Apartamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servcio_Apartamento">
+              <PropertyRef Name="Id_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Casa_Servicios">
+          <End Role="Servicios" Type="INMOBILIARIAModel.Servicios" Multiplicity="1" />
+          <End Role="Servicio_Casa" Type="INMOBILIARIAModel.Servicio_Casa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servicio_Casa">
+              <PropertyRef Name="Id_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ubicacion_Detalle_Ubicacion">
+          <End Role="Ubicacion" Type="INMOBILIARIAModel.Ubicacion" Multiplicity="1" />
+          <End Role="Ubicacion_Detalle" Type="INMOBILIARIAModel.Ubicacion_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ubicacion_Detalle">
+              <PropertyRef Name="Id_Ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="INMOBILIARIAModelStoreContainer" CdmEntityContainer="INMOBILIARIAEntitiesV1">
+          <EntitySetMapping Name="Apartamento"><EntityTypeMapping TypeName="INMOBILIARIAModel.Apartamento"><MappingFragment StoreEntitySet="Apartamento">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Id_Edificio" ColumnName="Id_Edificio" />
+            <ScalarProperty Name="N_Piso" ColumnName="N_Piso" />
+            <ScalarProperty Name="N_Puerta" ColumnName="N_Puerta" />
+            <ScalarProperty Name="Bloque" ColumnName="Bloque" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Casa"><EntityTypeMapping TypeName="INMOBILIARIAModel.Casa"><MappingFragment StoreEntitySet="Casa">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+            <ScalarProperty Name="Mts2" ColumnName="Mts2" />
+            <ScalarProperty Name="Id_Ubi_Detalle" ColumnName="Id_Ubi_Detalle" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Edificio"><EntityTypeMapping TypeName="INMOBILIARIAModel.Edificio"><MappingFragment StoreEntitySet="Edificio">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Id_Ubi_Detalle" ColumnName="Id_Ubi_Detalle" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="A_Contruccion" ColumnName="A_Contruccion" />
+            <ScalarProperty Name="N_Plantas" ColumnName="N_Plantas" />
+            <ScalarProperty Name="Inf_Adicional" ColumnName="Inf_Adicional" />
+            <ScalarProperty Name="mainfoto" ColumnName="mainfoto" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Edificio_Detalle"><EntityTypeMapping TypeName="INMOBILIARIAModel.Edificio_Detalle"><MappingFragment StoreEntitySet="Edificio_Detalle">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Id_Edificio" ColumnName="Id_Edificio" />
+            <ScalarProperty Name="Foto" ColumnName="Foto" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Fotos_Apartamento"><EntityTypeMapping TypeName="INMOBILIARIAModel.Fotos_Apartamento"><MappingFragment StoreEntitySet="Fotos_Apartamento">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Foto" ColumnName="Foto" />
+            <ScalarProperty Name="Id_Infra_Detalle" ColumnName="Id_Infra_Detalle" />
+            <ScalarProperty Name="Id_Apartamento" ColumnName="Id_Apartamento" />
+            <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Infraestructura"><EntityTypeMapping TypeName="INMOBILIARIAModel.Infraestructura"><MappingFragment StoreEntitySet="Infraestructura">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Infraestructura_Apartamento"><EntityTypeMapping TypeName="INMOBILIARIAModel.Infraestructura_Apartamento"><MappingFragment StoreEntitySet="Infraestructura_Apartamento">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Id_Apartamento" ColumnName="Id_Apartamento" />
+            <ScalarProperty Name="Id_Infrac_Detalle" ColumnName="Id_Infrac_Detalle" />
+            <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Infraestructura_Casa"><EntityTypeMapping TypeName="INMOBILIARIAModel.Infraestructura_Casa"><MappingFragment StoreEntitySet="Infraestructura_Casa">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Id_casa" ColumnName="Id_casa" />
+            <ScalarProperty Name="Id_Infrac_Detalle" ColumnName="Id_Infrac_Detalle" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Infraestructura_Detalle"><EntityTypeMapping TypeName="INMOBILIARIAModel.Infraestructura_Detalle"><MappingFragment StoreEntitySet="Infraestructura_Detalle">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Id_Infra" ColumnName="Id_Infra" />
+            <ScalarProperty Name="Tamano" ColumnName="Tamano" />
+            <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Servcio_Apartamento"><EntityTypeMapping TypeName="INMOBILIARIAModel.Servcio_Apartamento"><MappingFragment StoreEntitySet="Servcio_Apartamento">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Id_Apartemento" ColumnName="Id_Apartemento" />
+            <ScalarProperty Name="Id_Servicio" ColumnName="Id_Servicio" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Servicio_Casa"><EntityTypeMapping TypeName="INMOBILIARIAModel.Servicio_Casa"><MappingFragment StoreEntitySet="Servicio_Casa">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Id_casa" ColumnName="Id_casa" />
+            <ScalarProperty Name="Id_servicio" ColumnName="Id_servicio" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Servicios"><EntityTypeMapping TypeName="INMOBILIARIAModel.Servicios"><MappingFragment StoreEntitySet="Servicios">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+            <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="INMOBILIARIAModel.sysdiagrams"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Ubicacion"><EntityTypeMapping TypeName="INMOBILIARIAModel.Ubicacion"><MappingFragment StoreEntitySet="Ubicacion">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Ubicacion_Detalle"><EntityTypeMapping TypeName="INMOBILIARIAModel.Ubicacion_Detalle"><MappingFragment StoreEntitySet="Ubicacion_Detalle">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Id_Ubicacion" ColumnName="Id_Ubicacion" />
+            <ScalarProperty Name="Zona" ColumnName="Zona" />
+            <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="VistaDetailEdificio"><EntityTypeMapping TypeName="INMOBILIARIAModel.VistaDetailEdificio"><MappingFragment StoreEntitySet="VistaDetailEdificio">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="A_Contruccion" ColumnName="A_Contruccion" />
+            <ScalarProperty Name="N_Plantas" ColumnName="N_Plantas" />
+            <ScalarProperty Name="mainFoto" ColumnName="mainFoto" />
+            <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+            <ScalarProperty Name="Zona" ColumnName="Zona" />
+            <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+            <ScalarProperty Name="Inf_Adicional" ColumnName="Inf_Adicional" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertApartamento" FunctionName="INMOBILIARIAModel.Store.InsertApartamento" />
+          <FunctionImportMapping FunctionImportName="InsertEdificio" FunctionName="INMOBILIARIAModel.Store.InsertEdificio" />
+          <FunctionImportMapping FunctionImportName="InsertFotosApartamento" FunctionName="INMOBILIARIAModel.Store.InsertFotosApartamento" />
+          <FunctionImportMapping FunctionImportName="InsertServicioApartamento" FunctionName="INMOBILIARIAModel.Store.InsertServicioApartamento" />
+          <FunctionImportMapping FunctionImportName="InsertInfra_Apartamento" FunctionName="INMOBILIARIAModel.Store.InsertInfra_Apartamento" />
+          <FunctionImportMapping FunctionImportName="InsertInfraDetalle" FunctionName="INMOBILIARIAModel.Store.InsertInfraDetalle" />
+          <FunctionImportMapping FunctionImportName="InsertServicio" FunctionName="INMOBILIARIAModel.Store.InsertServicio" />
+          <FunctionImportMapping FunctionImportName="msp_ModificarEdificio" FunctionName="INMOBILIARIAModel.Store.msp_ModificarEdificio" />
+          <FunctionImportMapping FunctionImportName="sp_EliminarEdificio" FunctionName="INMOBILIARIAModel.Store.sp_EliminarEdificio" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DataModel">
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Apartamento" Width="1.5" PointX="3" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Casa" Width="1.5" PointX="3" PointY="9" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Edificio" Width="1.5" PointX="0.75" PointY="7.875" Height="2.9417936197916665" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Edificio_Detalle" Width="1.5" PointX="3" PointY="18.375" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Fotos_Apartamento" Width="2.125" PointX="5.25" PointY="5" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Infraestructura" Width="1.5" PointX="0.75" PointY="5.375" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Infraestructura_Apartamento" Width="1.5" PointX="5.25" PointY="2" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Infraestructura_Casa" Width="1.5" PointX="5.25" PointY="8.125" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Infraestructura_Detalle" Width="1.5" PointX="3" PointY="4.875" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Servcio_Apartamento" Width="1.5" PointX="10" PointY="2.125" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Servicio_Casa" Width="1.5" PointX="10" PointY="6.25" Height="1.9802864583333353" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Servicios" Width="1.5" PointX="7.75" PointY="3.25" Height="2.1725878906250022" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="9.625" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Ubicacion" Width="1.5" PointX="1.5" PointY="15.5" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.Ubicacion_Detalle" Width="1.5" PointX="1.5" PointY="12.125" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="INMOBILIARIAModel.VistaDetailEdificio" Width="1.5" PointX="9.75" PointY="9.625" Height="2.7494921875000031" IsExpanded="true" />
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Apartamento_Edificio" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.875" />
+          <ConnectorPoint PointX="2.625" PointY="7.5" />
+          <ConnectorPoint PointX="2.625" PointY="2.12474609375" />
+          <ConnectorPoint PointX="3" PointY="2.12474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Fotos_Apartamento_Apartamento" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="1.6718775" />
+          <ConnectorPoint PointX="7.09375" PointY="1.6718775" />
+          <ConnectorPoint PointX="7.09375" PointY="5" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Infraestructura_Apartamento_Apartamento" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="2.71849359375" />
+          <ConnectorPoint PointX="5.25" PointY="2.71849359375" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Servcio_Apartamento_Apartamento" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="1.34375" />
+          <ConnectorPoint PointX="10.75" PointY="1.34375" />
+          <ConnectorPoint PointX="10.75" PointY="2.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Casa_Ubicacion_Detalle" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.625" PointY="12.125" />
+          <ConnectorPoint PointX="2.625" PointY="11.122091471354167" />
+          <ConnectorPoint PointX="3" PointY="11.122091471354167" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Infraestructura_Casa_Casa" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="9.5526432291666659" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="9.5526432291666659" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="9.5526432291666659" />
+          <ConnectorPoint PointX="5.25" PointY="9.5526432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Servicio_Casa_Casa" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="10.490018276041667" />
+          <ConnectorPoint PointX="5" PointY="10.490018276041667" />
+          <ConnectorPoint PointX="5" PointY="7.875" />
+          <ConnectorPoint PointX="7.5" PointY="7.875" />
+          <ConnectorPoint PointX="7.5" PointY="9.375" />
+          <ConnectorPoint PointX="10.75" PointY="9.375" />
+          <ConnectorPoint PointX="10.75" PointY="8.2302864583333353" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Edificio_Detalle_Edificio" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.09375" PointY="10.816793619791667" />
+          <ConnectorPoint PointX="1.09375" PointY="19.268992513020834" />
+          <ConnectorPoint PointX="3" PointY="19.268992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Edificio_Ubicacion_Detalle" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.875" PointY="12.125" />
+          <ConnectorPoint PointX="1.875" PointY="10.816793619791667" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Fotos_Apartamento_Infraestructura_Detalle" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.1824446614583328" />
+          <ConnectorPoint PointX="5.25" PointY="6.1824446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Infraestructura_Detalle_Infraestructura" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.172841796875" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="6.1728417968749989" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="6.172841796875" />
+          <ConnectorPoint PointX="3" PointY="6.172841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Infraestructura_Apartamento_Infraestructura_Detalle" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="4.875" />
+          <ConnectorPoint PointX="4.875" PointY="4.5" />
+          <ConnectorPoint PointX="4.875" PointY="3.4767927421875005" />
+          <ConnectorPoint PointX="5.25" PointY="3.4767927421875005" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Infraestructura_Casa_Infraestructura_Detalle" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.4321907552083317" />
+          <ConnectorPoint PointX="4.875" PointY="7.8071907552083317" />
+          <ConnectorPoint PointX="4.875" PointY="7.7488471538461541" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="8.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Servcio_Apartamento_Servicios" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.25" PointY="3.6776432291666659" />
+          <ConnectorPoint PointX="10" PointY="3.6776432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Servicio_Casa_Servicios" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.5" PointY="5.4225878906250022" />
+          <ConnectorPoint PointX="8.5" PointY="7.0625" />
+          <ConnectorPoint PointX="10" PointY="7.0625" />
+        </AssociationConnector>
+        <AssociationConnector Association="INMOBILIARIAModel.FK_Ubicacion_Detalle_Ubicacion" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="15.5" />
+          <ConnectorPoint PointX="2.25" PointY="14.489889322916667" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
