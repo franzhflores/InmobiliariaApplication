@@ -141,9 +141,18 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
             return _entitiesManager.Context.Fotos_Apartamento.ToList();
         }
 
-        //public List<Fotos_Edificio> GetFotosEdificio()
-        //{
-        //    return _entitiesManager.Context.Foto_Edificio.ToList();
-        //}
+        public List<Foto_Edificio> GetFotosEdificio()
+        {
+            return _entitiesManager.Context.Foto_Edificio.ToList();
+        }
+
+
+        public string GuardarFotosEdificio(Foto_Edificio fedificio)
+        {
+            System.Data.Objects.ObjectResult objectResponse = _entitiesManager.Context.InsertFotoEdificio(fedificio.Id_Edificio,fedificio.Foto,fedificio.Descripcion);
+            foreach (string r in objectResponse)
+                return r;
+            return "";
+        }
     }
 }

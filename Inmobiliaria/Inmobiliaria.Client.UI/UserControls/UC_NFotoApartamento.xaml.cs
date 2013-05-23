@@ -35,8 +35,6 @@ namespace Inmobiliaria.Client.UI.UserControls
 
         void UC_NFotoApartamento_Loaded(object sender, RoutedEventArgs e)
         {
-           
-           
            cbx_infra.ItemsSource = LocalDataStore.GetInfraestructuraDetalleForFoto(_id_apartamento);
         }
 

@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
@@ -22,9 +23,6 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Fotos_Apartamento_Apartamento", "Apartamento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Apartamento), "Fotos_Apartamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Fotos_Apartamento), true)]
 [assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Infraestructura_Apartamento_Apartamento", "Apartamento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Apartamento), "Infraestructura_Apartamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Infraestructura_Apartamento), true)]
 [assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Servcio_Apartamento_Apartamento", "Apartamento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Apartamento), "Servcio_Apartamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Servcio_Apartamento), true)]
-[assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Casa_Ubicacion_Detalle", "Ubicacion_Detalle", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Ubicacion_Detalle), "Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Casa), true)]
-[assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Infraestructura_Casa_Casa", "Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Casa), "Infraestructura_Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Infraestructura_Casa), true)]
-[assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Servicio_Casa_Casa", "Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Casa), "Servicio_Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Servicio_Casa), true)]
 [assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Edificio_Detalle_Edificio", "Edificio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Edificio), "Edificio_Detalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Edificio_Detalle), true)]
 [assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Edificio_Ubicacion_Detalle", "Ubicacion_Detalle", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Ubicacion_Detalle), "Edificio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Edificio), true)]
 [assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Fotos_Apartamento_Infraestructura_Detalle", "Infraestructura_Detalle", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Infraestructura_Detalle), "Fotos_Apartamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Fotos_Apartamento), true)]
@@ -34,6 +32,12 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Servcio_Apartamento_Servicios", "Servicios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Servicios), "Servcio_Apartamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Servcio_Apartamento), true)]
 [assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Servicio_Casa_Servicios", "Servicios", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Servicios), "Servicio_Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Servicio_Casa), true)]
 [assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Ubicacion_Detalle_Ubicacion", "Ubicacion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Ubicacion), "Ubicacion_Detalle", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Ubicacion_Detalle), true)]
+[assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Foto_Edificio_Edificio", "Edificio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Edificio), "Foto_Edificio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Foto_Edificio), true)]
+[assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Foto_Casa_Ubicacion_Detalle", "Ubicacion_Detalle", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Ubicacion_Detalle), "Foto_Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Foto_Casa), true)]
+[assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Casa_Ubicacion_Detalle", "Ubicacion_Detalle", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Ubicacion_Detalle), "Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Casa), true)]
+[assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Foto_Casa_Casa", "Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Casa), "Foto_Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Foto_Casa), true)]
+[assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Infraestructura_Casa_Casa", "Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Casa), "Infraestructura_Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Infraestructura_Casa), true)]
+[assembly: EdmRelationshipAttribute("INMOBILIARIAModel", "FK_Servicio_Casa_Casa", "Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Casa), "Servicio_Casa", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Inmobiliaria.Service.ServiceInmobiliaria.Servicio_Casa), true)]
 
 #endregion
 
@@ -100,22 +104,6 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
             }
         }
         private ObjectSet<Apartamento> _Apartamento;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<Casa> Casa
-        {
-            get
-            {
-                if ((_Casa == null))
-                {
-                    _Casa = base.CreateObjectSet<Casa>("Casa");
-                }
-                return _Casa;
-            }
-        }
-        private ObjectSet<Casa> _Casa;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -340,8 +328,73 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
             }
         }
         private ObjectSet<VistaDetailEdificio> _VistaDetailEdificio;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Foto_Casa> Foto_Casa
+        {
+            get
+            {
+                if ((_Foto_Casa == null))
+                {
+                    _Foto_Casa = base.CreateObjectSet<Foto_Casa>("Foto_Casa");
+                }
+                return _Foto_Casa;
+            }
+        }
+        private ObjectSet<Foto_Casa> _Foto_Casa;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Foto_Edificio> Foto_Edificio
+        {
+            get
+            {
+                if ((_Foto_Edificio == null))
+                {
+                    _Foto_Edificio = base.CreateObjectSet<Foto_Edificio>("Foto_Edificio");
+                }
+                return _Foto_Edificio;
+            }
+        }
+        private ObjectSet<Foto_Edificio> _Foto_Edificio;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Tipo_Casa> Tipo_Casa
+        {
+            get
+            {
+                if ((_Tipo_Casa == null))
+                {
+                    _Tipo_Casa = base.CreateObjectSet<Tipo_Casa>("Tipo_Casa");
+                }
+                return _Tipo_Casa;
+            }
+        }
+        private ObjectSet<Tipo_Casa> _Tipo_Casa;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Casa> Casa
+        {
+            get
+            {
+                if ((_Casa == null))
+                {
+                    _Casa = base.CreateObjectSet<Casa>("Casa");
+                }
+                return _Casa;
+            }
+        }
+        private ObjectSet<Casa> _Casa;
 
         #endregion
+
         #region Métodos AddTo
     
         /// <summary>
@@ -350,14 +403,6 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         public void AddToApartamento(Apartamento apartamento)
         {
             base.AddObject("Apartamento", apartamento);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet Casa. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToCasa(Casa casa)
-        {
-            base.AddObject("Casa", casa);
         }
     
         /// <summary>
@@ -471,8 +516,41 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         {
             base.AddObject("VistaDetailEdificio", vistaDetailEdificio);
         }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Foto_Casa. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToFoto_Casa(Foto_Casa foto_Casa)
+        {
+            base.AddObject("Foto_Casa", foto_Casa);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Foto_Edificio. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToFoto_Edificio(Foto_Edificio foto_Edificio)
+        {
+            base.AddObject("Foto_Edificio", foto_Edificio);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Tipo_Casa. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTipo_Casa(Tipo_Casa tipo_Casa)
+        {
+            base.AddObject("Tipo_Casa", tipo_Casa);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Casa. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToCasa(Casa casa)
+        {
+            base.AddObject("Casa", casa);
+        }
 
         #endregion
+
         #region Importaciones de funciones
     
         /// <summary>
@@ -909,13 +987,54 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
     
             return base.ExecuteFunction<Nullable<global::System.Int32>>("sp_EliminarEdificio", id_EdificioParameter);
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="id_Edificio">No hay documentación de metadatos disponible.</param>
+        /// <param name="foto">No hay documentación de metadatos disponible.</param>
+        /// <param name="descripcion">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<global::System.String> InsertFotoEdificio(global::System.String id_Edificio, global::System.String foto, global::System.String descripcion)
+        {
+            ObjectParameter id_EdificioParameter;
+            if (id_Edificio != null)
+            {
+                id_EdificioParameter = new ObjectParameter("Id_Edificio", id_Edificio);
+            }
+            else
+            {
+                id_EdificioParameter = new ObjectParameter("Id_Edificio", typeof(global::System.String));
+            }
+    
+            ObjectParameter fotoParameter;
+            if (foto != null)
+            {
+                fotoParameter = new ObjectParameter("Foto", foto);
+            }
+            else
+            {
+                fotoParameter = new ObjectParameter("Foto", typeof(global::System.String));
+            }
+    
+            ObjectParameter descripcionParameter;
+            if (descripcion != null)
+            {
+                descripcionParameter = new ObjectParameter("Descripcion", descripcion);
+            }
+            else
+            {
+                descripcionParameter = new ObjectParameter("Descripcion", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<global::System.String>("InsertFotoEdificio", id_EdificioParameter, fotoParameter, descripcionParameter);
+        }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entidades
     
     /// <summary>
@@ -946,6 +1065,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1072,6 +1192,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnBloqueChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1180,6 +1301,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1196,20 +1318,21 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         /// Crear un nuevo objeto Casa.
         /// </summary>
         /// <param name="id">Valor inicial de la propiedad Id.</param>
-        /// <param name="tipo">Valor inicial de la propiedad Tipo.</param>
+        /// <param name="id_TipoCasa">Valor inicial de la propiedad Id_TipoCasa.</param>
         /// <param name="mts2">Valor inicial de la propiedad Mts2.</param>
         /// <param name="id_Ubi_Detalle">Valor inicial de la propiedad Id_Ubi_Detalle.</param>
-        public static Casa CreateCasa(global::System.String id, global::System.String tipo, global::System.String mts2, global::System.String id_Ubi_Detalle)
+        public static Casa CreateCasa(global::System.String id, global::System.String id_TipoCasa, global::System.String mts2, global::System.String id_Ubi_Detalle)
         {
             Casa casa = new Casa();
             casa.Id = id;
-            casa.Tipo = tipo;
+            casa.Id_TipoCasa = id_TipoCasa;
             casa.Mts2 = mts2;
             casa.Id_Ubi_Detalle = id_Ubi_Detalle;
             return casa;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1244,24 +1367,24 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Tipo
+        public global::System.String Id_TipoCasa
         {
             get
             {
-                return _Tipo;
+                return _Id_TipoCasa;
             }
             set
             {
-                OnTipoChanging(value);
-                ReportPropertyChanging("Tipo");
-                _Tipo = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Tipo");
-                OnTipoChanged();
+                OnId_TipoCasaChanging(value);
+                ReportPropertyChanging("Id_TipoCasa");
+                _Id_TipoCasa = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Id_TipoCasa");
+                OnId_TipoCasaChanged();
             }
         }
-        private global::System.String _Tipo;
-        partial void OnTipoChanging(global::System.String value);
-        partial void OnTipoChanged();
+        private global::System.String _Id_TipoCasa;
+        partial void OnId_TipoCasaChanging(global::System.String value);
+        partial void OnId_TipoCasaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -1312,6 +1435,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnId_Ubi_DetalleChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1349,6 +1473,28 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Ubicacion_Detalle>("INMOBILIARIAModel.FK_Casa_Ubicacion_Detalle", "Ubicacion_Detalle", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("INMOBILIARIAModel", "FK_Foto_Casa_Casa", "Foto_Casa")]
+        public EntityCollection<Foto_Casa> Foto_Casa
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Foto_Casa>("INMOBILIARIAModel.FK_Foto_Casa_Casa", "Foto_Casa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Foto_Casa>("INMOBILIARIAModel.FK_Foto_Casa_Casa", "Foto_Casa", value);
                 }
             }
         }
@@ -1398,6 +1544,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1428,6 +1575,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1602,6 +1750,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnmainfotoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1686,8 +1835,31 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("INMOBILIARIAModel", "FK_Foto_Edificio_Edificio", "Foto_Edificio")]
+        public EntityCollection<Foto_Edificio> Foto_Edificio
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Foto_Edificio>("INMOBILIARIAModel.FK_Foto_Edificio_Edificio", "Foto_Edificio");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Foto_Edificio>("INMOBILIARIAModel.FK_Foto_Edificio_Edificio", "Foto_Edificio", value);
+                }
+            }
+        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1716,6 +1888,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1794,6 +1967,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnFotoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1836,6 +2010,421 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="INMOBILIARIAModel", Name="Foto_Casa")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Foto_Casa : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Foto_Casa.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad Id.</param>
+        /// <param name="id_Casa">Valor inicial de la propiedad Id_Casa.</param>
+        /// <param name="id_Infrac_Detalle">Valor inicial de la propiedad Id_Infrac_Detalle.</param>
+        /// <param name="foto">Valor inicial de la propiedad Foto.</param>
+        public static Foto_Casa CreateFoto_Casa(global::System.String id, global::System.String id_Casa, global::System.String id_Infrac_Detalle, global::System.String foto)
+        {
+            Foto_Casa foto_Casa = new Foto_Casa();
+            foto_Casa.Id = id;
+            foto_Casa.Id_Casa = id_Casa;
+            foto_Casa.Id_Infrac_Detalle = id_Infrac_Detalle;
+            foto_Casa.Foto = foto;
+            return foto_Casa;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.String _Id;
+        partial void OnIdChanging(global::System.String value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Id_Casa
+        {
+            get
+            {
+                return _Id_Casa;
+            }
+            set
+            {
+                OnId_CasaChanging(value);
+                ReportPropertyChanging("Id_Casa");
+                _Id_Casa = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Id_Casa");
+                OnId_CasaChanged();
+            }
+        }
+        private global::System.String _Id_Casa;
+        partial void OnId_CasaChanging(global::System.String value);
+        partial void OnId_CasaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Id_Infrac_Detalle
+        {
+            get
+            {
+                return _Id_Infrac_Detalle;
+            }
+            set
+            {
+                OnId_Infrac_DetalleChanging(value);
+                ReportPropertyChanging("Id_Infrac_Detalle");
+                _Id_Infrac_Detalle = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Id_Infrac_Detalle");
+                OnId_Infrac_DetalleChanged();
+            }
+        }
+        private global::System.String _Id_Infrac_Detalle;
+        partial void OnId_Infrac_DetalleChanging(global::System.String value);
+        partial void OnId_Infrac_DetalleChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Foto
+        {
+            get
+            {
+                return _Foto;
+            }
+            set
+            {
+                OnFotoChanging(value);
+                ReportPropertyChanging("Foto");
+                _Foto = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Foto");
+                OnFotoChanged();
+            }
+        }
+        private global::System.String _Foto;
+        partial void OnFotoChanging(global::System.String value);
+        partial void OnFotoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Descripcion
+        {
+            get
+            {
+                return _Descripcion;
+            }
+            set
+            {
+                OnDescripcionChanging(value);
+                ReportPropertyChanging("Descripcion");
+                _Descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Descripcion");
+                OnDescripcionChanged();
+            }
+        }
+        private global::System.String _Descripcion;
+        partial void OnDescripcionChanging(global::System.String value);
+        partial void OnDescripcionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("INMOBILIARIAModel", "FK_Foto_Casa_Ubicacion_Detalle", "Ubicacion_Detalle")]
+        public Ubicacion_Detalle Ubicacion_Detalle
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Ubicacion_Detalle>("INMOBILIARIAModel.FK_Foto_Casa_Ubicacion_Detalle", "Ubicacion_Detalle").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Ubicacion_Detalle>("INMOBILIARIAModel.FK_Foto_Casa_Ubicacion_Detalle", "Ubicacion_Detalle").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Ubicacion_Detalle> Ubicacion_DetalleReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Ubicacion_Detalle>("INMOBILIARIAModel.FK_Foto_Casa_Ubicacion_Detalle", "Ubicacion_Detalle");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Ubicacion_Detalle>("INMOBILIARIAModel.FK_Foto_Casa_Ubicacion_Detalle", "Ubicacion_Detalle", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("INMOBILIARIAModel", "FK_Foto_Casa_Casa", "Casa")]
+        public Casa Casa
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Foto_Casa_Casa", "Casa").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Foto_Casa_Casa", "Casa").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Casa> CasaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Foto_Casa_Casa", "Casa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Casa>("INMOBILIARIAModel.FK_Foto_Casa_Casa", "Casa", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="INMOBILIARIAModel", Name="Foto_Edificio")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Foto_Edificio : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Foto_Edificio.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad Id.</param>
+        /// <param name="id_Edificio">Valor inicial de la propiedad Id_Edificio.</param>
+        /// <param name="foto">Valor inicial de la propiedad Foto.</param>
+        public static Foto_Edificio CreateFoto_Edificio(global::System.String id, global::System.String id_Edificio, global::System.String foto)
+        {
+            Foto_Edificio foto_Edificio = new Foto_Edificio();
+            foto_Edificio.Id = id;
+            foto_Edificio.Id_Edificio = id_Edificio;
+            foto_Edificio.Foto = foto;
+            return foto_Edificio;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.String _Id;
+        partial void OnIdChanging(global::System.String value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Id_Edificio
+        {
+            get
+            {
+                return _Id_Edificio;
+            }
+            set
+            {
+                OnId_EdificioChanging(value);
+                ReportPropertyChanging("Id_Edificio");
+                _Id_Edificio = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Id_Edificio");
+                OnId_EdificioChanged();
+            }
+        }
+        private global::System.String _Id_Edificio;
+        partial void OnId_EdificioChanging(global::System.String value);
+        partial void OnId_EdificioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Foto
+        {
+            get
+            {
+                return _Foto;
+            }
+            set
+            {
+                OnFotoChanging(value);
+                ReportPropertyChanging("Foto");
+                _Foto = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Foto");
+                OnFotoChanged();
+            }
+        }
+        private global::System.String _Foto;
+        partial void OnFotoChanging(global::System.String value);
+        partial void OnFotoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Descripcion
+        {
+            get
+            {
+                return _Descripcion;
+            }
+            set
+            {
+                OnDescripcionChanging(value);
+                ReportPropertyChanging("Descripcion");
+                _Descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Descripcion");
+                OnDescripcionChanged();
+            }
+        }
+        private global::System.String _Descripcion;
+        partial void OnDescripcionChanging(global::System.String value);
+        partial void OnDescripcionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("INMOBILIARIAModel", "FK_Foto_Edificio_Edificio", "Edificio")]
+        public Edificio Edificio
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Edificio>("INMOBILIARIAModel.FK_Foto_Edificio_Edificio", "Edificio").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Edificio>("INMOBILIARIAModel.FK_Foto_Edificio_Edificio", "Edificio").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Edificio> EdificioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Edificio>("INMOBILIARIAModel.FK_Foto_Edificio_Edificio", "Edificio");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Edificio>("INMOBILIARIAModel.FK_Foto_Edificio_Edificio", "Edificio", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -1866,6 +2455,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1992,6 +2582,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2072,6 +2663,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2098,6 +2690,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2152,6 +2745,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnNombreChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2178,6 +2772,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2206,6 +2801,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2308,6 +2904,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnCantidadChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2388,6 +2985,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2416,6 +3014,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2448,7 +3047,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Id_casa
         {
@@ -2458,14 +3057,11 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
             }
             set
             {
-                if (_Id_casa != value)
-                {
-                    OnId_casaChanging(value);
-                    ReportPropertyChanging("Id_casa");
-                    _Id_casa = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("Id_casa");
-                    OnId_casaChanged();
-                }
+                OnId_casaChanging(value);
+                ReportPropertyChanging("Id_casa");
+                _Id_casa = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Id_casa");
+                OnId_casaChanged();
             }
         }
         private global::System.String _Id_casa;
@@ -2475,7 +3071,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Id_Infrac_Detalle
         {
@@ -2485,61 +3081,45 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
             }
             set
             {
-                if (_Id_Infrac_Detalle != value)
-                {
-                    OnId_Infrac_DetalleChanging(value);
-                    ReportPropertyChanging("Id_Infrac_Detalle");
-                    _Id_Infrac_Detalle = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("Id_Infrac_Detalle");
-                    OnId_Infrac_DetalleChanged();
-                }
+                OnId_Infrac_DetalleChanging(value);
+                ReportPropertyChanging("Id_Infrac_Detalle");
+                _Id_Infrac_Detalle = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Id_Infrac_Detalle");
+                OnId_Infrac_DetalleChanged();
             }
         }
         private global::System.String _Id_Infrac_Detalle;
         partial void OnId_Infrac_DetalleChanging(global::System.String value);
         partial void OnId_Infrac_DetalleChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Cantidad
+        {
+            get
+            {
+                return _Cantidad;
+            }
+            set
+            {
+                OnCantidadChanging(value);
+                ReportPropertyChanging("Cantidad");
+                _Cantidad = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Cantidad");
+                OnCantidadChanged();
+            }
+        }
+        private global::System.String _Cantidad;
+        partial void OnCantidadChanging(global::System.String value);
+        partial void OnCantidadChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("INMOBILIARIAModel", "FK_Infraestructura_Casa_Casa", "Casa")]
-        public Casa Casa
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Infraestructura_Casa_Casa", "Casa").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Infraestructura_Casa_Casa", "Casa").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Casa> CasaReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Infraestructura_Casa_Casa", "Casa");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Casa>("INMOBILIARIAModel.FK_Infraestructura_Casa_Casa", "Casa", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -2578,8 +3158,47 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("INMOBILIARIAModel", "FK_Infraestructura_Casa_Casa", "Casa")]
+        public Casa Casa
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Infraestructura_Casa_Casa", "Casa").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Infraestructura_Casa_Casa", "Casa").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Casa> CasaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Infraestructura_Casa_Casa", "Casa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Casa>("INMOBILIARIAModel.FK_Infraestructura_Casa_Casa", "Casa", value);
+                }
+            }
+        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2610,6 +3229,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2712,6 +3332,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2820,6 +3441,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2848,6 +3470,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2880,7 +3503,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Id_Apartemento
         {
@@ -2890,14 +3513,11 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
             }
             set
             {
-                if (_Id_Apartemento != value)
-                {
-                    OnId_ApartementoChanging(value);
-                    ReportPropertyChanging("Id_Apartemento");
-                    _Id_Apartemento = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("Id_Apartemento");
-                    OnId_ApartementoChanged();
-                }
+                OnId_ApartementoChanging(value);
+                ReportPropertyChanging("Id_Apartemento");
+                _Id_Apartemento = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Id_Apartemento");
+                OnId_ApartementoChanged();
             }
         }
         private global::System.String _Id_Apartemento;
@@ -2907,7 +3527,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Id_Servicio
         {
@@ -2917,14 +3537,11 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
             }
             set
             {
-                if (_Id_Servicio != value)
-                {
-                    OnId_ServicioChanging(value);
-                    ReportPropertyChanging("Id_Servicio");
-                    _Id_Servicio = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("Id_Servicio");
-                    OnId_ServicioChanged();
-                }
+                OnId_ServicioChanging(value);
+                ReportPropertyChanging("Id_Servicio");
+                _Id_Servicio = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Id_Servicio");
+                OnId_ServicioChanged();
             }
         }
         private global::System.String _Id_Servicio;
@@ -2932,6 +3549,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnId_ServicioChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3012,6 +3630,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3040,6 +3659,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3072,7 +3692,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Id_casa
         {
@@ -3082,14 +3702,11 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
             }
             set
             {
-                if (_Id_casa != value)
-                {
-                    OnId_casaChanging(value);
-                    ReportPropertyChanging("Id_casa");
-                    _Id_casa = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("Id_casa");
-                    OnId_casaChanged();
-                }
+                OnId_casaChanging(value);
+                ReportPropertyChanging("Id_casa");
+                _Id_casa = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Id_casa");
+                OnId_casaChanged();
             }
         }
         private global::System.String _Id_casa;
@@ -3099,7 +3716,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Id_servicio
         {
@@ -3109,14 +3726,11 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
             }
             set
             {
-                if (_Id_servicio != value)
-                {
-                    OnId_servicioChanging(value);
-                    ReportPropertyChanging("Id_servicio");
-                    _Id_servicio = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("Id_servicio");
-                    OnId_servicioChanged();
-                }
+                OnId_servicioChanging(value);
+                ReportPropertyChanging("Id_servicio");
+                _Id_servicio = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Id_servicio");
+                OnId_servicioChanged();
             }
         }
         private global::System.String _Id_servicio;
@@ -3124,46 +3738,9 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnId_servicioChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("INMOBILIARIAModel", "FK_Servicio_Casa_Casa", "Casa")]
-        public Casa Casa
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Servicio_Casa_Casa", "Casa").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Servicio_Casa_Casa", "Casa").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Casa> CasaReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Servicio_Casa_Casa", "Casa");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Casa>("INMOBILIARIAModel.FK_Servicio_Casa_Casa", "Casa", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -3202,8 +3779,47 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("INMOBILIARIAModel", "FK_Servicio_Casa_Casa", "Casa")]
+        public Casa Casa
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Servicio_Casa_Casa", "Casa").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Servicio_Casa_Casa", "Casa").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Casa> CasaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Casa>("INMOBILIARIAModel.FK_Servicio_Casa_Casa", "Casa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Casa>("INMOBILIARIAModel.FK_Servicio_Casa_Casa", "Casa", value);
+                }
+            }
+        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3232,6 +3848,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3334,6 +3951,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3382,6 +4000,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3410,6 +4029,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3536,6 +4156,90 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OndefinitionChanged();
 
         #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="INMOBILIARIAModel", Name="Tipo_Casa")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Tipo_Casa : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Tipo_Casa.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad Id.</param>
+        /// <param name="nombre">Valor inicial de la propiedad Nombre.</param>
+        public static Tipo_Casa CreateTipo_Casa(global::System.String id, global::System.String nombre)
+        {
+            Tipo_Casa tipo_Casa = new Tipo_Casa();
+            tipo_Casa.Id = id;
+            tipo_Casa.Nombre = nombre;
+            return tipo_Casa;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.String _Id;
+        partial void OnIdChanging(global::System.String value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Nombre
+        {
+            get
+            {
+                return _Nombre;
+            }
+            set
+            {
+                OnNombreChanging(value);
+                ReportPropertyChanging("Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Nombre");
+                OnNombreChanged();
+            }
+        }
+        private global::System.String _Nombre;
+        partial void OnNombreChanging(global::System.String value);
+        partial void OnNombreChanged();
+
+        #endregion
+
     
     }
     
@@ -3563,6 +4267,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3617,6 +4322,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnProvinciaChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3643,6 +4349,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3673,6 +4380,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3775,30 +4483,9 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnDireccionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("INMOBILIARIAModel", "FK_Casa_Ubicacion_Detalle", "Casa")]
-        public EntityCollection<Casa> Casa
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Casa>("INMOBILIARIAModel.FK_Casa_Ubicacion_Detalle", "Casa");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Casa>("INMOBILIARIAModel.FK_Casa_Ubicacion_Detalle", "Casa", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -3859,8 +4546,53 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("INMOBILIARIAModel", "FK_Foto_Casa_Ubicacion_Detalle", "Foto_Casa")]
+        public EntityCollection<Foto_Casa> Foto_Casa
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Foto_Casa>("INMOBILIARIAModel.FK_Foto_Casa_Ubicacion_Detalle", "Foto_Casa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Foto_Casa>("INMOBILIARIAModel.FK_Foto_Casa_Ubicacion_Detalle", "Foto_Casa", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("INMOBILIARIAModel", "FK_Casa_Ubicacion_Detalle", "Casa")]
+        public EntityCollection<Casa> Casa
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Casa>("INMOBILIARIAModel.FK_Casa_Ubicacion_Detalle", "Casa");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Casa>("INMOBILIARIAModel.FK_Casa_Ubicacion_Detalle", "Casa", value);
+                }
+            }
+        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3895,6 +4627,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4132,9 +4865,11 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         partial void OnInf_AdicionalChanged();
 
         #endregion
+
     
     }
 
     #endregion
+
     
 }

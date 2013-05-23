@@ -24,7 +24,7 @@ namespace Inmobiliaria.Client.UI.UserControls
 
         ControladorUserControls _controlerUserControls;
         Grid _parentContainer;
-
+        Model.Edificio edificioSelected;
         public UCEdificio(ControladorUserControls controlerUserControls, Grid parentContainer)
         {
             InitializeComponent();
@@ -83,9 +83,14 @@ namespace Inmobiliaria.Client.UI.UserControls
 
         private void lbx_DataList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Model.Edificio edificioSelected = e.AddedItems[0] as Model.Edificio;
+            edificioSelected = e.AddedItems[0] as Model.Edificio;
             grid_Context.DataContext = LocalDataStore.GetViewDetailEdificio(edificioSelected);
-            //exp_Fotos.Content = new UC_ViewFotos(LocalDataStore.GetFotoEdificioOf(edificioSelected));
+            exp_Fotos.Content = new UC_ViewFotos(LocalDataStore.GetFotoEdificioOf(edificioSelected));
+        }
+
+        private void btn_Foto_Click(object sender, RoutedEventArgs e)
+        {
+            _controlerUserControls.PutUserControlIntoWin(new UC_NFotoEdificio(getIdEdificioFromTag(sender)));
         }
     }
 }

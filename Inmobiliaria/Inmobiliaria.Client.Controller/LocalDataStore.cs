@@ -84,7 +84,7 @@ namespace Inmobiliaria.Client.Controller
             return queryResult;
         }
 
-        /*     static List<Model.Foto_Edificio> _listFotoEdificio;
+       static List<Model.Foto_Edificio> _listFotoEdificio;
         public static List<Model.Foto_Edificio> ListFotoEdificio
         {
             get
@@ -93,22 +93,34 @@ namespace Inmobiliaria.Client.Controller
                     _listFotoEdificio = ServicesManager.Instance.ServiceClient.GetFotosEdificio();
                 return _listFotoEdificio;
             }
-        }*/
+        }
 
-        //public static List<InfoCategoriaFoto> GetFotoEdificioOf(Model.Edificio edificio)
-        //{
-          
-        //    var queryResult = (from fe in ListFotoEdificio
-        //                       where fe.Id_Edificio == edificio.Id                               
-        //                       select new InfoGeneralFoto()
-        //                       {
-        //                           Descripcion = fe.Descripcion,
-        //                           Foto = fe.Foto
-        //                           //Infraestructura = id.Descripcion
-        //                       });
+        public static List<InfoCategoriaFoto> GetFotoEdificioOf(Model.Edificio edificio)
+        {
 
-        //    return GetListCategoriaFoto(queryResult);
-        //}
+            var queryResult = (from fe in ListFotoEdificio
+                               where fe.Id_Edificio == edificio.Id
+                               select new InfoGeneralFoto()
+                               {
+                                   Descripcion = fe.Descripcion,
+                                   Foto = fe.Foto
+                                   //Infraestructura = id.Descripcion
+                               });
+
+            return GetListCategoriaFoto(queryResult);
+        }
+
+        public static bool GuardarFotoEdificio(Model.Foto_Edificio fedificio)
+        {
+            string response = ServicesManager.Instance.ServiceClient.GuardarFotosEdificio(fedificio);
+            if (response != "")
+            {
+                fedificio.Id = response;
+                ListFotoEdificio.Add(fedificio);
+                return true;
+            }
+            return false;
+        }
 
         #endregion
 

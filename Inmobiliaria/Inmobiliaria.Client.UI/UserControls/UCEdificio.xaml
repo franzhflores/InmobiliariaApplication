@@ -54,6 +54,7 @@
                             </StackPanel>
 
                             <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Right" >
+                                <Button Content="+Fotos"  Name="btn_Foto" Tag="{Binding Id}" Width="110" Click="btn_Foto_Click" />
                                 <Button Content="Eliminar"  Name="btn_Delete"  Click="btn_Delete_Click" Tag="{Binding Id}" Width="110" />
                                 <Button Content="Modificar" Name="btn_Update" Click="btn_Update_Click"  Tag="{Binding Id}"  Width="{Binding Width,ElementName=btn_Delete}"/>
                                 <Button Content="Apartamentos" Name="btn_VerApartamentos" Tag="{Binding Id}"  Width="120" Click="btn_VerApartamentos_Click" />

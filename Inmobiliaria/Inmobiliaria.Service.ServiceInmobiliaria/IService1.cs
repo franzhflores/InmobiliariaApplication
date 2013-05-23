@@ -67,8 +67,10 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         [OperationContract]
         List<Fotos_Apartamento> GetFotosApartamento();
 
-        //[OperationContract]
-        //List<Fotos_Apartamento> GetFotosEdificio();
+        [OperationContract]
+        List<Foto_Edificio> GetFotosEdificio();
 
+        [OperationContract]
+        string GuardarFotosEdificio(Foto_Edificio fedificio);
     }
 }
