@@ -23,16 +23,24 @@ namespace Inmobiliaria.Client.UI.UserControls
     {
         List<CheckBox> _listCheckBoxes;
         string _id_apartamento;
-
+        public string _actionButton = "Aceptar";
         public UC_ListServicios(string id_apartamento)
         {
             InitializeComponent();
             lbx_DataList.ItemsSource = LocalDataStore.ListServicios;
-            
             _id_apartamento = id_apartamento;
             this.Loaded += new RoutedEventHandler(UC_ListServicios_Loaded);
             IsPosibleClose = true;
         }
+
+        public UC_ListServicios()
+        {
+            InitializeComponent();
+            lbx_DataList.ItemsSource = LocalDataStore.ListServicios;
+            this.Loaded += new RoutedEventHandler(UC_ListServicios_Loaded);
+            IsPosibleClose = true;
+        }
+
 
         void UC_ListServicios_Loaded(object sender, RoutedEventArgs e)
         {
@@ -43,18 +51,21 @@ namespace Inmobiliaria.Client.UI.UserControls
 
         public bool IsPosibleClose { get; set; }
 
-        public void Aceptar(object sender, EventArgs e)
+
+        public List<Model.Servicios> ListServiciosSelected { get;private set; }
+
+        private void SetServicioSelectedFromListBox()
         {
             List<Model.Servicios> _listItemsSelected = lbx_DataList.ItemsSource as List<Model.Servicios>;
-            List<Model.Servicios> temp = new List<Model.Servicios>();
+            ListServiciosSelected = new List<Model.Servicios>();
             _listCheckBoxes.Clear();
             HelpContentVisual.GetListChild<CheckBox>(lbx_DataList, _listCheckBoxes, "checkBox");
-             foreach (CheckBox item in _listCheckBoxes.FindAll(P => P.IsChecked == true))
-             {
-                 var elemFound =  _listItemsSelected.Find(P => P.Id == item.Tag.ToString());
-                if(elemFound!=null)
+            foreach (CheckBox item in _listCheckBoxes.FindAll(P => P.IsChecked == true))
+            {
+                var elemFound = _listItemsSelected.Find(P => P.Id == item.Tag.ToString());
+                if (elemFound != null)
                 {
-                    temp.Add(new Model.Servicios()
+                    ListServiciosSelected.Add(new Model.Servicios()
                     {
                         Id = elemFound.Id,
                         Nombre = elemFound.Nombre,
@@ -62,13 +73,19 @@ namespace Inmobiliaria.Client.UI.UserControls
                         Tipo = elemFound.Tipo,
                     });
                 }
-             }
-            if (_listItemsSelected.Count == 0)
+            }
+        }
+
+        public void Aceptar(object sender, EventArgs e)
+        {
+            SetServicioSelectedFromListBox();
+            if (_actionButton != "Aceptar") return;
+            if (ListServiciosSelected.Count == 0)
             {
                 MessageBox.Show("Selecione un servicio", "Registro de Servicio", MessageBoxButton.OK, MessageBoxImage.Information);
                 return; 
             }
-            if(LocalDataStore.GuardarServicioApartamento(temp, _id_apartamento))
+            if (LocalDataStore.GuardarServicioApartamento(ListServiciosSelected, _id_apartamento))
               {
                 MessageBox.Show("Se guardo exitosamente", "Registro de Servicio", MessageBoxButton.OK, MessageBoxImage.Information);
              }

@@ -60,7 +60,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Apartamento.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -68,6 +70,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Fotos_Apartamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Foto_Edificio.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Infraestructura.datasource">

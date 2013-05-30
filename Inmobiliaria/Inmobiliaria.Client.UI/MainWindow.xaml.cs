@@ -27,12 +27,18 @@ namespace Inmobiliaria.Client.UI
             InitializeComponent();
         }
 
-       
+        private void LoadUCActual(UserControl usercontrol )
+        {
+
+            if (gridUCContainer.Children.Count != 0)
+                gridUCContainer.Children.RemoveAt(0);
+
+            gridUCContainer.Children.Add(usercontrol);
+        }
 
         private void btnOpenEdificio_Click(object sender, RoutedEventArgs e)
         {
-            
-            gridUserControlContainer.Children.Add(new UserControls.UCEdificio(_controlerUserControls, this.gridUserControlContainer));
+            LoadUCActual(new UserControls.UCEdificio(_controlerUserControls, this.gridUCContainer));
         }
 
         private void btn_uploadImage_Click(object sender, RoutedEventArgs e)
@@ -42,11 +48,8 @@ namespace Inmobiliaria.Client.UI
 
         private void btn_OpenCasa_Click(object sender, RoutedEventArgs e)
         {
-            gridUserControlContainer.Children.Add(new UserControls.UC_Casa(_controlerUserControls));
+            LoadUCActual(new UserControls.UC_Casa(_controlerUserControls));
         }
-
-   
-
    
     }
 }

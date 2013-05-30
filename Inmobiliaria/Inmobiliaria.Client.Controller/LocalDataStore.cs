@@ -122,6 +122,13 @@ namespace Inmobiliaria.Client.Controller
             return false;
         }
 
+        public static List<Model.Edificio> FiltrarEdificiosPorUbicacion(string provincia, string zona)
+        {
+            if(zona !=null)
+                return ListEdificios.FindAll(E => E.Ubicacion_Detalle.Ubicacion.Provincia == provincia && E.Ubicacion_Detalle.Zona == zona);
+            return ListEdificios.FindAll(E => E.Ubicacion_Detalle.Ubicacion.Provincia == provincia );
+        }
+
         #endregion
 
         #region trabajando  con Ubicaciones
@@ -245,6 +252,23 @@ namespace Inmobiliaria.Client.Controller
                 return true;
             }
             return false;
+        }
+
+        public static List<Model.Apartamento> FilterForServicios(List<Model.Servicios> listServicios)
+        {
+            List<Model.Apartamento> result = ListApartament.FindAll(A => HasSomeServices(A.Servcio_Apartamento, listServicios) == true);
+            return result;
+        }
+
+        //Preguntamos si el apartamento enviado tiene algunos de los servicion de la lista
+        public static bool HasSomeServices(List<Model.Servcio_Apartamento> listServiciosDeApartamento, List<Model.Servicios> listServicios)
+        {
+            foreach (var servicio in listServicios)
+            {
+                var result = listServiciosDeApartamento.Find(S=> S.Id_Servicio ==servicio.Id);
+                if (result == null) return false;
+            }
+            return true;
         }
 
         #endregion

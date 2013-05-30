@@ -28,6 +28,7 @@ namespace Inmobiliaria.Client.UI.UserControls
             this.Height = uc_Actual.Height + 10;
             this.Width = uc_Actual.Width + 10;
             MainPanel.Children.Add(uc_Actual);
+            //this.btn_Aceptar.Content = contentForAceptarButton;
             //btn_Cancelar.Click += uc.Cancelar;
         }
 
