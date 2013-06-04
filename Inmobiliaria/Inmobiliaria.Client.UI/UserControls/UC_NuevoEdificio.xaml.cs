@@ -78,6 +78,7 @@ namespace Inmobiliaria.Client.UI.UserControls
             newEdificio.A_Contruccion = calendar1.SelectedDate.Value;
             newEdificio.Inf_Adicional = txt_IAdicional.Text;
             newEdificio.Id_Ubi_Detalle = _idUbicacionDetalle;
+            newEdificio.Direccion = txt_Direccion.Text;
             bool response = LocalDataStore.GuardarEdificio(newEdificio, _dicInfoImage[HelpImage.InfoImage.FULLPATH].ToString());
             if (response == true)
             {

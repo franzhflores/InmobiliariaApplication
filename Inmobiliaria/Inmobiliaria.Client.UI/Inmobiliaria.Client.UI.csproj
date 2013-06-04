@@ -57,13 +57,9 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="UIAutomationProvider" />
-    <Reference Include="VideoClub">
-      <HintPath>E:\MY FILES\PROYECTOS\VideoClub\bin\Debug\VideoClub.exe</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -74,7 +70,6 @@
     <Compile Include="HelpImage.cs" />
     <Compile Include="HelpContentVisual.cs" />
     <Compile Include="HelpValidacionesDeControles.cs" />
-    <Compile Include="UserControls\HelpQuery.cs" />
     <Compile Include="UserControls\IListaEntidad.cs" />
     <Compile Include="UserControls\UC_ListaEdificio.xaml.cs">
       <DependentUpon>UC_ListaEdificio.xaml</DependentUpon>

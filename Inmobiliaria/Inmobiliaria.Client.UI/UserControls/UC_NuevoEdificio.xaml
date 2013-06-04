@@ -47,7 +47,7 @@
         <Label Content="Provincia" Grid.ColumnSpan="2" Height="28" HorizontalAlignment="Left" Margin="115,3,0,0" Name="label5" VerticalAlignment="Top" Width="155" Grid.Row="5" />
         <Label Content="Zona" Grid.ColumnSpan="2" Height="28" HorizontalAlignment="Left" Margin="115,1,0,0" Name="label6" VerticalAlignment="Top" Width="155" Grid.Row="6" />
         <Label Content="Direccion" Grid.ColumnSpan="2" Height="28" HorizontalAlignment="Left" Margin="117,3,0,0" Name="label7" VerticalAlignment="Top" Width="155" Grid.Row="7" />
-        <TextBox Grid.Column="2" Height="23" HorizontalAlignment="Left" Margin="2,5,0,0" Name="textBox1" VerticalAlignment="Top" Width="191" Grid.Row="7" />
+        <TextBox Grid.Column="2" Height="23" HorizontalAlignment="Left" Margin="2,5,0,0" Name="txt_Direccion" VerticalAlignment="Top" Width="191" Grid.Row="7" />
       
         <DatePicker   Name="calendar1"  Grid.Row="4" Grid.Column="2" Height="25" Foreground="White" />
         <Canvas Grid.ColumnSpan="4"   Name="canvas1" >

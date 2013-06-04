@@ -31,7 +31,7 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         public string GuardarEdificio(Edificio edificio, string pathImageOrigen)
         {
             //System.IO.File.Copy(pathImageOrigen, edificio.mainfoto, true);
-            System.Data.Objects.ObjectResult  objectResponse = _entitiesManager.Context.InsertEdificio(edificio.Id_Ubi_Detalle,edificio.Nombre, edificio.A_Contruccion, edificio.N_Plantas, edificio.Inf_Adicional, edificio.mainfoto);           
+            System.Data.Objects.ObjectResult  objectResponse = _entitiesManager.Context.InsertEdificio(edificio.Id_Ubi_Detalle,edificio.Nombre, edificio.A_Contruccion, edificio.N_Plantas, edificio.Inf_Adicional, edificio.mainfoto,edificio.Direccion);           
             foreach(string r in objectResponse)
                 return r;
             return "";

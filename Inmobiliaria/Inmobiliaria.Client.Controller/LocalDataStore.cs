@@ -74,7 +74,7 @@ namespace Inmobiliaria.Client.Controller
                                                  select new InformacionEdificio()
                                                           {
                                                               A_Construccion = e.A_Contruccion,
-                                                              Direccion = ud.Direccion,
+                                                              Direccion = e.Direccion,
                                                               Inf_Adicional = e.Inf_Adicional,
                                                               N_Apartamentos = GetApartamentsOf(e.Id).Count,
                                                               N_Plantas = (int)e.N_Plantas,
