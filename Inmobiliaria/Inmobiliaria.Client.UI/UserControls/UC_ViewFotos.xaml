@@ -15,7 +15,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel >
-                        <Label Content="{Binding Categoria}" Tag="{Binding Id}" Background="Orange" d:DesignWidth="300"/>
+                        <Label Content="{Binding Categoria}" Tag="{Binding ListaDeFotos}" Background="Orange" d:DesignWidth="300" Name="lbl_Fotos"/>
                         <ListBox ItemsSource="{Binding ListaDeFotos}" Margin="5,0,0,0">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -25,7 +25,10 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel>
-                                        <Image Source="{Binding Foto}" Tag="{Binding Id}" Stretch="Fill" Height="100" Width="80" Margin="0,0,5,0"/>
+                                        <Button Margin="0,0,5,0" Height="100" Width="80" Tag="{Binding Tag, ElementName=lbl_Fotos}" Name="btn_ImageContent" Click="btn_ImageContent_Click">
+                                            <Image Source="{Binding Foto}" Tag="{Binding Id}" Stretch="Fill" MouseEnter="Image_MouseEnter" />
+                                        </Button>
+                                        
                                         <TextBlock Text="{Binding Descripcion}"/>
                                     </StackPanel>
                                 </DataTemplate>

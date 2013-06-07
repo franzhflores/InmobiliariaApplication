@@ -31,23 +31,31 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
         public string GuardarEdificio(Edificio edificio, string pathImageOrigen)
         {
             //System.IO.File.Copy(pathImageOrigen, edificio.mainfoto, true);
-            System.Data.Objects.ObjectResult  objectResponse = _entitiesManager.Context.InsertEdificio(edificio.Id_Ubi_Detalle,edificio.Nombre, edificio.A_Contruccion, edificio.N_Plantas, edificio.Inf_Adicional, edificio.mainfoto,edificio.Direccion);           
+            System.Data.Objects.ObjectResult objectResponse = _entitiesManager.Context.InsertEdificio(edificio.Inmueble.Id_Ubi_Detalle, edificio.Nombre, edificio.Inmueble.A_Construccion, edificio.N_Plantas, edificio.Inmueble.Inf_adicional, edificio.Inmueble.Foto, edificio.Inmueble.Direccion);           
             foreach(string r in objectResponse)
                 return r;
             return "";
         }
 
-        public bool EliminarEdificio(string Id_Edificio)
+        public bool EliminarEdificio(string Id_Edificio) 
         {
-            System.Data.Objects.ObjectResult objectResponse = _entitiesManager.Context.sp_EliminarEdificio(Id_Edificio);
-            foreach (int r in objectResponse)
-                return r == 1 ? true : false;
-            return false;
+            try
+            {
+                System.Data.Objects.ObjectResult objectResponse = _entitiesManager.Context.sp_EliminarEdificio(Id_Edificio);
+                foreach (int r in objectResponse)
+                    return r == 1 ? true : false;
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+           
         }
 
         public bool ModificarEdificio(Edificio edificio)
         {
-            System.Data.Objects.ObjectResult objectResponse = _entitiesManager.Context.msp_ModificarEdificio(edificio.Id,edificio.Id_Ubi_Detalle, edificio.Nombre, edificio.A_Contruccion, edificio.N_Plantas, edificio.Inf_Adicional, edificio.mainfoto);
+            System.Data.Objects.ObjectResult objectResponse = _entitiesManager.Context.msp_ModificarEdificio(edificio.Id, edificio.Inmueble.Id_Ubi_Detalle, edificio.Nombre, edificio.Inmueble.A_Construccion, edificio.N_Plantas, edificio.Inmueble.Inf_adicional, edificio.Inmueble.Foto, edificio.Inmueble.Id);
             foreach (int r in objectResponse)
                 return r == 1 ? true : false;
             return false;
@@ -153,6 +161,12 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
             foreach (string r in objectResponse)
                 return r;
             return "";
+        }
+
+
+        public string GuardarInmueble(Inmueble inmu)
+        {
+            throw new NotImplementedException();
         }
     }
 }

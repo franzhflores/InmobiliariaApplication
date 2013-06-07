@@ -11,6 +11,15 @@ namespace Inmobiliaria.Client.Controller
     {
         //nuevo cambio
 
+        public static void SetListasEnNull()
+        {
+            _listEdificios = null;
+            _listApartament = null;
+            _listServicioApartamento = null;
+            _listServicios = null;
+            _dicInfraestructura = null;
+        }
+
         #region trabajando con edificios
         static List<Model.Edificio> _listEdificios;
 
@@ -31,10 +40,13 @@ namespace Inmobiliaria.Client.Controller
                 Id = edificio.Id,
                 Nombre = edificio.Nombre,
                 N_Plantas = edificio.N_Plantas,
-                mainfoto = edificio.mainfoto,
-                A_Contruccion = edificio.A_Contruccion,
-                Inf_Adicional = edificio.Inf_Adicional,
-                Id_Ubi_Detalle = edificio.Id_Ubi_Detalle
+                Inmueble = new Model.Inmueble()
+                {
+                    Foto = edificio.Inmueble.Foto,
+                    A_Construccion = edificio.Inmueble.A_Construccion,
+                    Inf_adicional = edificio.Inmueble.Inf_adicional,
+                    Id_Ubi_Detalle = edificio.Inmueble.Id_Ubi_Detalle
+                }
             };
             bool response = ServicesManager.Instance.ServiceClient.ModificarEdificio(tempEdificio);
             if (response)
@@ -50,8 +62,9 @@ namespace Inmobiliaria.Client.Controller
             string response = ServicesManager.Instance.ServiceClient.GuardarEdificio(edificio, pathImageOrigen);
             if (response != "")
             {
-                edificio.Id = response;
-                _listEdificios.Add(edificio);
+                //edificio.Id = response;
+                //_listEdificios.Add(edificio);
+                _listEdificios = null;
                 return true;
             }
             return false;
@@ -61,30 +74,31 @@ namespace Inmobiliaria.Client.Controller
         {
             bool response = ServicesManager.Instance.ServiceClient.EliminarEdificio(Id_Edificio);
             if (response)
-                _listEdificios.RemoveAll(P => P.Id == Id_Edificio);
+                //_listEdificios.RemoveAll(P => P.Id == Id_Edificio);
+                _listEdificios = null;
             return response;
         }
 
         public static InformacionEdificio GetViewDetailEdificio(Model.Edificio edificio)
         {
-             InformacionEdificio queryResult = (from e in ListEdificios
-                                                  where e.Id == edificio.Id
-                                                  join ud in GetUbicacionDetalle() on e.Id_Ubi_Detalle equals ud.Id
-                                                 join u in ListUbicaciones on ud.Id_Ubicacion equals u.Id
-                                                 select new InformacionEdificio()
-                                                          {
-                                                              A_Construccion = e.A_Contruccion,
-                                                              Direccion = e.Direccion,
-                                                              Inf_Adicional = e.Inf_Adicional,
-                                                              N_Apartamentos = GetApartamentsOf(e.Id).Count,
-                                                              N_Plantas = (int)e.N_Plantas,
-                                                              Provincia = u.Provincia,
-                                                              Zona = ud.Zona
+            InformacionEdificio queryResult = (from e in ListEdificios
+                                               where e.Id == edificio.Id
+                                               join ud in GetUbicacionDetalle() on e.Inmueble.Id_Ubi_Detalle equals ud.Id
+                                               join u in ListUbicaciones on ud.Id_Ubicacion equals u.Id
+                                               select new InformacionEdificio()
+                                                        {
+                                                            A_Construccion = (DateTime)e.Inmueble.A_Construccion,
+                                                            Direccion = e.Inmueble.Direccion,
+                                                            Inf_Adicional = e.Inmueble.Inf_adicional,
+                                                            N_Apartamentos = GetApartamentsOf(e.Id).Count,
+                                                            N_Plantas = (int)e.N_Plantas,
+                                                            Provincia = u.Provincia,
+                                                            Zona = ud.Zona
                                                         }).ElementAt(0);
             return queryResult;
         }
 
-       static List<Model.Foto_Edificio> _listFotoEdificio;
+        static List<Model.Foto_Edificio> _listFotoEdificio;
         public static List<Model.Foto_Edificio> ListFotoEdificio
         {
             get
@@ -102,6 +116,7 @@ namespace Inmobiliaria.Client.Controller
                                where fe.Id_Edificio == edificio.Id
                                select new InfoGeneralFoto()
                                {
+                                   Id = fe.Id,
                                    Descripcion = fe.Descripcion,
                                    Foto = fe.Foto
                                    //Infraestructura = id.Descripcion
@@ -124,9 +139,9 @@ namespace Inmobiliaria.Client.Controller
 
         public static List<Model.Edificio> FiltrarEdificiosPorUbicacion(string provincia, string zona)
         {
-            if(zona !=null)
-                return ListEdificios.FindAll(E => E.Ubicacion_Detalle.Ubicacion.Provincia == provincia && E.Ubicacion_Detalle.Zona == zona);
-            return ListEdificios.FindAll(E => E.Ubicacion_Detalle.Ubicacion.Provincia == provincia );
+            if (zona != null)
+                return ListEdificios.FindAll(E => E.Inmueble.Ubicacion_Detalle.Ubicacion.Provincia == provincia && E.Inmueble.Ubicacion_Detalle.Zona == zona);
+            return ListEdificios.FindAll(E => E.Inmueble.Ubicacion_Detalle.Ubicacion.Provincia == provincia);
         }
 
         #endregion
@@ -135,11 +150,11 @@ namespace Inmobiliaria.Client.Controller
         static Dictionary<Model.Ubicacion, List<Model.Ubicacion_Detalle>> _dicUbicaciones;
         public static Dictionary<Model.Ubicacion, List<Model.Ubicacion_Detalle>> DictionaryUbicaciones
         {
-            get 
+            get
             {
-                 if (_dicUbicaciones == null)
-                                    _dicUbicaciones = ServicesManager.Instance.ServiceClient.GetDictionaryUbicaciones();
-                 return _dicUbicaciones;
+                if (_dicUbicaciones == null)
+                    _dicUbicaciones = ServicesManager.Instance.ServiceClient.GetDictionaryUbicaciones();
+                return _dicUbicaciones;
             }
         }
 
@@ -173,8 +188,8 @@ namespace Inmobiliaria.Client.Controller
         {
             get
             {
-                if (_listApartament == null) 
-                _listApartament = ServicesManager.Instance.ServiceClient.GetApartamentosAll();
+                if (_listApartament == null)
+                    _listApartament = ServicesManager.Instance.ServiceClient.GetApartamentosAll();
                 return _listApartament;
             }
         }
@@ -207,9 +222,9 @@ namespace Inmobiliaria.Client.Controller
             return ListApartament.FindAll(P => P.Id_Edificio == idEdificio);
         }
 
-        public static List<Model.Infraestructura_Apartamento> GetInfraestructarOf(string idApartament) 
+        public static List<Model.Infraestructura_Apartamento> GetInfraestructarOf(string idApartament)
         {
-            return  _infraestructuraApartament.FindAll(P => P.Id_Apartamento == idApartament);
+            return _infraestructuraApartament.FindAll(P => P.Id_Apartamento == idApartament);
         }
 
         public static bool GuardarApartamento(Model.Apartamento apartamento)
@@ -234,12 +249,13 @@ namespace Inmobiliaria.Client.Controller
                                join id in ListInfraDetalle on fa.Id_Infra_Detalle equals id.Id
                                select new InfoGeneralFoto()
                                {
+                                   Id = fa.Id,
                                    Descripcion = fa.Descripcion,
                                    Foto = fa.Foto,
                                    Infraestructura = id.Descripcion
                                });
 
-            return GetListCategoriaFoto(queryResult);         
+            return GetListCategoriaFoto(queryResult);
         }
 
         public static bool GuardarFotoApartamento(Model.Fotos_Apartamento fapartamento)
@@ -265,7 +281,7 @@ namespace Inmobiliaria.Client.Controller
         {
             foreach (var servicio in listServicios)
             {
-                var result = listServiciosDeApartamento.Find(S=> S.Id_Servicio ==servicio.Id);
+                var result = listServiciosDeApartamento.Find(S => S.Id_Servicio == servicio.Id);
                 if (result == null) return false;
             }
             return true;
@@ -280,7 +296,7 @@ namespace Inmobiliaria.Client.Controller
         {
             get
             {
-                if (_dicInfraestructura == null) 
+                if (_dicInfraestructura == null)
                     _dicInfraestructura = ServicesManager.Instance.ServiceClient.GetDictionaryInfraestructuras();
                 return _dicInfraestructura;
             }
@@ -306,7 +322,7 @@ namespace Inmobiliaria.Client.Controller
             DictionaryInfraestructura.Values.ToList().ForEach(LD => ListInfraDetalle.AddRange(LD));
 
             var tempfraDetalle = from id in ListInfraDetalle
-                                 join ia in ListInfraestructuraApartament on id.Id equals ia.Id_Infrac_Detalle 
+                                 join ia in ListInfraestructuraApartament on id.Id equals ia.Id_Infrac_Detalle
                                  where ia.Id_Apartamento == id_apartamento
                                  select new Model.Infraestructura_Detalle()
                                  {
@@ -361,25 +377,25 @@ namespace Inmobiliaria.Client.Controller
         /// <returns></returns>
         public static IEnumerable<InfoInfraestructuraApartamento> GetViewDetailInfraestructura(Model.Apartamento apartamento)
         {
-           var queryResult = (from a in ListApartament
-                                                                where a.Id == apartamento.Id
-                                                                join ia in ListInfraestructuraApartament on a.Id equals ia.Id_Apartamento
-                                                                join id in GetInfraestructuraDetalle() on ia.Id_Infrac_Detalle equals id.Id
-                                                                join i in ListInfraestructura on id.Id_Infra equals i.Id
-                                                                select new InfoInfraestructuraApartamento()
-                                                                {
-                                                                    Cantidad = ia.Cantidad,
-                                                                    IdApartament = a.Id,
-                                                                    DescripcionInfraestructura = id.Descripcion,
-                                                                    IdIDetalle = id.Id,
-                                                                    NombreInfraestructura = i.Nombre,
-                                                                    TamanoInfraestructura = id.Tamano
-                                                                }) ;
-            return queryResult ;
+            var queryResult = (from a in ListApartament
+                               where a.Id == apartamento.Id
+                               join ia in ListInfraestructuraApartament on a.Id equals ia.Id_Apartamento
+                               join id in GetInfraestructuraDetalle() on ia.Id_Infrac_Detalle equals id.Id
+                               join i in ListInfraestructura on id.Id_Infra equals i.Id
+                               select new InfoInfraestructuraApartamento()
+                               {
+                                   Cantidad = ia.Cantidad,
+                                   IdApartament = a.Id,
+                                   DescripcionInfraestructura = id.Descripcion,
+                                   IdIDetalle = id.Id,
+                                   NombreInfraestructura = i.Nombre,
+                                   TamanoInfraestructura = id.Tamano
+                               });
+            return queryResult;
         }
 
         #endregion
-            
+
         #region trabajando  con Servicio
 
         private static List<Model.Servicios> _listServicios;
@@ -388,7 +404,7 @@ namespace Inmobiliaria.Client.Controller
         {
             get
             {
-                if(_listServicios==null)
+                if (_listServicios == null)
                     _listServicios = ServicesManager.Instance.ServiceClient.GetListServicios();
                 return _listServicios;
             }
@@ -396,9 +412,9 @@ namespace Inmobiliaria.Client.Controller
 
         private static List<Model.Servcio_Apartamento> _listServicioApartamento;
 
-        public static List<Model.Servcio_Apartamento> ListServicioApartamento 
+        public static List<Model.Servcio_Apartamento> ListServicioApartamento
         {
-            get 
+            get
             {
                 if (_listServicioApartamento == null)
                     _listServicioApartamento = ServicesManager.Instance.ServiceClient.GetListServicioApartamento();
@@ -420,7 +436,7 @@ namespace Inmobiliaria.Client.Controller
 
         public static void imprime(List<Model.Servcio_Apartamento> ls)
         {
-            ls.ForEach(SA=> Debug.WriteLine("{0} {1} {2}",SA.Id, SA.Id_Apartemento,SA.Id_Servicio));
+            ls.ForEach(SA => Debug.WriteLine("{0} {1} {2}", SA.Id, SA.Id_Apartemento, SA.Id_Servicio));
         }
 
         public static void imprime(List<Model.Servicios> ls)
@@ -431,8 +447,8 @@ namespace Inmobiliaria.Client.Controller
         public static bool GuardarServicioApartamento(List<Model.Servicios> listServcios, string id_Apartamento)
         {
             ServicesManager.Instance.ServiceClient.GuardarServicioApartamento(listServcios, id_Apartamento);
-            if (_listServicioApartamento != null)                
-                    _listServicioApartamento.Clear();
+            if (_listServicioApartamento != null)
+                _listServicioApartamento.Clear();
             _listServicioApartamento = ServicesManager.Instance.ServiceClient.GetListServicioApartamento();
             return true;
         }
@@ -440,17 +456,17 @@ namespace Inmobiliaria.Client.Controller
         public static IEnumerable<InfoServicioApartamento> GetViewDetailServicio(Model.Apartamento apartamento)
         {
             var queryResult = (from a in ListApartament
-                                                         where a.Id == apartamento.Id
-                                                        join sa in ListServicioApartamento on a.Id equals sa.Id_Apartemento 
-                                                         join s in ListServicios on sa.Id_Servicio equals s.Id
-                                                         select new InfoServicioApartamento()
-                                                         {
-                                                             Descripcion = s.Descripcion,
-                                                             IdApartament = a.Id,
-                                                             IdSApartamento = sa.Id_Servicio,
-                                                             NombreServicio = s.Nombre,
-                                                             TipoServicio = s.Tipo
-                                                         }) ;
+                               where a.Id == apartamento.Id
+                               join sa in ListServicioApartamento on a.Id equals sa.Id_Apartemento
+                               join s in ListServicios on sa.Id_Servicio equals s.Id
+                               select new InfoServicioApartamento()
+                               {
+                                   Descripcion = s.Descripcion,
+                                   IdApartament = a.Id,
+                                   IdSApartamento = sa.Id_Servicio,
+                                   NombreServicio = s.Nombre,
+                                   TipoServicio = s.Tipo
+                               });
             return queryResult;
         }
 

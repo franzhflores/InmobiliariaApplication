@@ -19,7 +19,7 @@
             <Button Content="Apartamentos" Height="23"  />
             <Button Content="Servicios" Height="23"  />
             <Button Content="Infraestructuras" Height="23" />
-            
+            <Button Content="Actualizar" Height="23" Name="btn_Update" Width="68" Click="btn_Update_Click" />
         </StackPanel>
     </Grid>
 </Window>

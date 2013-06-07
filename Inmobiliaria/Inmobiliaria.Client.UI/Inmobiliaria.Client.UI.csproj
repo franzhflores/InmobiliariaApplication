@@ -108,6 +108,9 @@
     <Compile Include="UserControls\UC_NApartament.xaml.cs">
       <DependentUpon>UC_NApartament.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UC_NCasa.xaml.cs">
+      <DependentUpon>UC_NCasa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UC_NFotoApartamento.xaml.cs">
       <DependentUpon>UC_NFotoApartamento.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,9 @@
     </Compile>
     <Compile Include="UserControls\Win_ModificarEdificio.xaml.cs">
       <DependentUpon>Win_ModificarEdificio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Win_VerPhotos.xaml.cs">
+      <DependentUpon>Win_VerPhotos.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -225,6 +231,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\UC_NCasa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\UC_NFotoApartamento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -250,6 +260,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Win_ModificarEdificio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Win_VerPhotos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

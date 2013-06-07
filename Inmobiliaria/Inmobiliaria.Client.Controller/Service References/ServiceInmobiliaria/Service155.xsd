@@ -11,17 +11,15 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q1:EntityObject">
         <xs:sequence>
-          <xs:element minOccurs="0" name="A_Contruccion" type="xs:dateTime" />
           <xs:element minOccurs="0" name="Apartamento" nillable="true" type="tns:ArrayOfApartamento" />
           <xs:element minOccurs="0" name="Edificio_Detalle" nillable="true" type="tns:ArrayOfEdificio_Detalle" />
+          <xs:element minOccurs="0" name="Foto_Edificio" nillable="true" type="tns:ArrayOfFoto_Edificio" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Id_Ubi_Detalle" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Inf_Adicional" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_inmueble" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Inmueble" nillable="true" type="tns:Inmueble" />
+          <xs:element minOccurs="0" name="InmuebleReference" nillable="true" type="q1:EntityReferenceOfInmueblegUishwcV" />
           <xs:element minOccurs="0" name="N_Plantas" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Ubicacion_Detalle" nillable="true" type="tns:Ubicacion_Detalle" />
-          <xs:element minOccurs="0" name="Ubicacion_DetalleReference" nillable="true" type="q1:EntityReferenceOfUbicacion_DetallegUishwcV" />
-          <xs:element minOccurs="0" name="mainfoto" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -37,9 +35,11 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q2:EntityObject">
         <xs:sequence>
+          <xs:element minOccurs="0" name="Alquiler_Apartamento" nillable="true" type="tns:ArrayOfAlquiler_Apartamento" />
           <xs:element minOccurs="0" name="Bloque" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Edificio" nillable="true" type="tns:Edificio" />
           <xs:element minOccurs="0" name="EdificioReference" nillable="true" type="q2:EntityReferenceOfEdificiogUishwcV" />
+          <xs:element minOccurs="0" name="Especificacion_Apartamento" nillable="true" type="tns:ArrayOfEspecificacion_Apartamento" />
           <xs:element minOccurs="0" name="Fotos_Apartamento" nillable="true" type="tns:ArrayOfFotos_Apartamento" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id_Edificio" nillable="true" type="xs:string" />
@@ -52,40 +52,172 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Apartamento" nillable="true" type="tns:Apartamento" />
-  <xs:complexType name="ArrayOfFotos_Apartamento">
+  <xs:complexType name="ArrayOfAlquiler_Apartamento">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Fotos_Apartamento" nillable="true" type="tns:Fotos_Apartamento" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Alquiler_Apartamento" nillable="true" type="tns:Alquiler_Apartamento" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfFotos_Apartamento" nillable="true" type="tns:ArrayOfFotos_Apartamento" />
-  <xs:complexType name="Fotos_Apartamento">
+  <xs:element name="ArrayOfAlquiler_Apartamento" nillable="true" type="tns:ArrayOfAlquiler_Apartamento" />
+  <xs:complexType name="Alquiler_Apartamento">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q3:EntityObject">
         <xs:sequence>
+          <xs:element minOccurs="0" name="Agente" nillable="true" type="tns:Agente" />
+          <xs:element minOccurs="0" name="AgenteReference" nillable="true" type="q3:EntityReferenceOfAgentegUishwcV" />
           <xs:element minOccurs="0" name="Apartamento" nillable="true" type="tns:Apartamento" />
           <xs:element minOccurs="0" name="ApartamentoReference" nillable="true" type="q3:EntityReferenceOfApartamentogUishwcV" />
-          <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Foto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Cliente" nillable="true" type="tns:Cliente" />
+          <xs:element minOccurs="0" name="ClienteReference" nillable="true" type="q3:EntityReferenceOfClientegUishwcV" />
+          <xs:element minOccurs="0" name="Fecha_Entrega" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Fecha_Final" type="xs:dateTime" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Id_Apartamento" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Id_Infra_Detalle" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Infraestructura_Detalle" nillable="true" type="tns:Infraestructura_Detalle" />
-          <xs:element minOccurs="0" name="Infraestructura_DetalleReference" nillable="true" type="q3:EntityReferenceOfInfraestructura_DetallegUishwcV" />
+          <xs:element minOccurs="0" name="Id_Agente" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Cliente" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_EApartamento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Pagos_Alquiler_Apartamento" nillable="true" type="tns:ArrayOfPagos_Alquiler_Apartamento" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="Fotos_Apartamento" nillable="true" type="tns:Fotos_Apartamento" />
-  <xs:complexType name="Infraestructura_Detalle">
+  <xs:element name="Alquiler_Apartamento" nillable="true" type="tns:Alquiler_Apartamento" />
+  <xs:complexType name="Agente">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q4:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Alquiler_Apartamento" nillable="true" type="tns:ArrayOfAlquiler_Apartamento" />
+          <xs:element minOccurs="0" name="Cargo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fecha_Inicio" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Persona" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Persona" nillable="true" type="tns:Persona" />
+          <xs:element minOccurs="0" name="PersonaReference" nillable="true" type="q4:EntityReferenceOfPersonagUishwcV" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Agente" nillable="true" type="tns:Agente" />
+  <xs:complexType name="Persona">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q5:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Agente" nillable="true" type="tns:ArrayOfAgente" />
+          <xs:element minOccurs="0" name="Apellido_Materno" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Apellido_Paterno" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CI" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="E_mail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Genero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Ubicacion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Telefono" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Ubicacion_Detalle" nillable="true" type="tns:Ubicacion_Detalle" />
+          <xs:element minOccurs="0" name="Ubicacion_DetalleReference" nillable="true" type="q5:EntityReferenceOfUbicacion_DetallegUishwcV" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Persona" nillable="true" type="tns:Persona" />
+  <xs:complexType name="ArrayOfAgente">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Agente" nillable="true" type="tns:Agente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAgente" nillable="true" type="tns:ArrayOfAgente" />
+  <xs:complexType name="Ubicacion_Detalle">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q6:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Foto_Casa" nillable="true" type="tns:ArrayOfFoto_Casa" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Ubicacion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Inmueble" nillable="true" type="tns:ArrayOfInmueble" />
+          <xs:element minOccurs="0" name="Persona" nillable="true" type="tns:ArrayOfPersona" />
+          <xs:element minOccurs="0" name="Ubicacion" nillable="true" type="tns:Ubicacion" />
+          <xs:element minOccurs="0" name="UbicacionReference" nillable="true" type="q6:EntityReferenceOfUbicaciongUishwcV" />
+          <xs:element minOccurs="0" name="Zona" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Ubicacion_Detalle" nillable="true" type="tns:Ubicacion_Detalle" />
+  <xs:complexType name="ArrayOfFoto_Casa">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Foto_Casa" nillable="true" type="tns:Foto_Casa" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFoto_Casa" nillable="true" type="tns:ArrayOfFoto_Casa" />
+  <xs:complexType name="Foto_Casa">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q7:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Casa" nillable="true" type="tns:Casa" />
+          <xs:element minOccurs="0" name="CasaReference" nillable="true" type="q7:EntityReferenceOfCasagUishwcV" />
+          <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Foto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Casa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Infrac_Detalle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ubicacion_Detalle" nillable="true" type="tns:Ubicacion_Detalle" />
+          <xs:element minOccurs="0" name="Ubicacion_DetalleReference" nillable="true" type="q7:EntityReferenceOfUbicacion_DetallegUishwcV" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Foto_Casa" nillable="true" type="tns:Foto_Casa" />
+  <xs:complexType name="Casa">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q8:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Foto_Casa" nillable="true" type="tns:ArrayOfFoto_Casa" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_TipoCasa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_inmueble" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Infraestructura_Casa" nillable="true" type="tns:ArrayOfInfraestructura_Casa" />
+          <xs:element minOccurs="0" name="Inmueble" nillable="true" type="tns:Inmueble" />
+          <xs:element minOccurs="0" name="InmuebleReference" nillable="true" type="q8:EntityReferenceOfInmueblegUishwcV" />
+          <xs:element minOccurs="0" name="Mts2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Servicio_Casa" nillable="true" type="tns:ArrayOfServicio_Casa" />
+          <xs:element minOccurs="0" name="Tipo_Casa" nillable="true" type="tns:Tipo_Casa" />
+          <xs:element minOccurs="0" name="Tipo_CasaReference" nillable="true" type="q8:EntityReferenceOfTipo_CasagUishwcV" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Casa" nillable="true" type="tns:Casa" />
+  <xs:complexType name="ArrayOfInfraestructura_Casa">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Infraestructura_Casa" nillable="true" type="tns:Infraestructura_Casa" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInfraestructura_Casa" nillable="true" type="tns:ArrayOfInfraestructura_Casa" />
+  <xs:complexType name="Infraestructura_Casa">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q9:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Casa" nillable="true" type="tns:Casa" />
+          <xs:element minOccurs="0" name="CasaReference" nillable="true" type="q9:EntityReferenceOfCasagUishwcV" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Infrac_Detalle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_casa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Infraestructura_Detalle" nillable="true" type="tns:Infraestructura_Detalle" />
+          <xs:element minOccurs="0" name="Infraestructura_DetalleReference" nillable="true" type="q9:EntityReferenceOfInfraestructura_DetallegUishwcV" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Infraestructura_Casa" nillable="true" type="tns:Infraestructura_Casa" />
+  <xs:complexType name="Infraestructura_Detalle">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q10:EntityObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Fotos_Apartamento" nillable="true" type="tns:ArrayOfFotos_Apartamento" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id_Infra" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Infraestructura" nillable="true" type="tns:Infraestructura" />
-          <xs:element minOccurs="0" name="InfraestructuraReference" nillable="true" type="q4:EntityReferenceOfInfraestructuragUishwcV" />
+          <xs:element minOccurs="0" name="InfraestructuraReference" nillable="true" type="q10:EntityReferenceOfInfraestructuragUishwcV" />
           <xs:element minOccurs="0" name="Infraestructura_Apartamento" nillable="true" type="tns:ArrayOfInfraestructura_Apartamento" />
           <xs:element minOccurs="0" name="Infraestructura_Casa" nillable="true" type="tns:ArrayOfInfraestructura_Casa" />
           <xs:element minOccurs="0" name="Tamano" nillable="true" type="xs:string" />
@@ -94,9 +226,33 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Infraestructura_Detalle" nillable="true" type="tns:Infraestructura_Detalle" />
+  <xs:complexType name="ArrayOfFotos_Apartamento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Fotos_Apartamento" nillable="true" type="tns:Fotos_Apartamento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFotos_Apartamento" nillable="true" type="tns:ArrayOfFotos_Apartamento" />
+  <xs:complexType name="Fotos_Apartamento">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q11:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Apartamento" nillable="true" type="tns:Apartamento" />
+          <xs:element minOccurs="0" name="ApartamentoReference" nillable="true" type="q11:EntityReferenceOfApartamentogUishwcV" />
+          <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Foto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Apartamento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Infra_Detalle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Infraestructura_Detalle" nillable="true" type="tns:Infraestructura_Detalle" />
+          <xs:element minOccurs="0" name="Infraestructura_DetalleReference" nillable="true" type="q11:EntityReferenceOfInfraestructura_DetallegUishwcV" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Fotos_Apartamento" nillable="true" type="tns:Fotos_Apartamento" />
   <xs:complexType name="Infraestructura">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q5:EntityObject">
+      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q12:EntityObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Infraestructura_Detalle" nillable="true" type="tns:ArrayOfInfraestructura_Detalle" />
@@ -120,60 +276,46 @@
   <xs:element name="ArrayOfInfraestructura_Apartamento" nillable="true" type="tns:ArrayOfInfraestructura_Apartamento" />
   <xs:complexType name="Infraestructura_Apartamento">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q6:EntityObject">
+      <xs:extension xmlns:q13="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q13:EntityObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="Apartamento" nillable="true" type="tns:Apartamento" />
-          <xs:element minOccurs="0" name="ApartamentoReference" nillable="true" type="q6:EntityReferenceOfApartamentogUishwcV" />
+          <xs:element minOccurs="0" name="ApartamentoReference" nillable="true" type="q13:EntityReferenceOfApartamentogUishwcV" />
           <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id_Apartamento" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id_Infrac_Detalle" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Infraestructura_Detalle" nillable="true" type="tns:Infraestructura_Detalle" />
-          <xs:element minOccurs="0" name="Infraestructura_DetalleReference" nillable="true" type="q6:EntityReferenceOfInfraestructura_DetallegUishwcV" />
+          <xs:element minOccurs="0" name="Infraestructura_DetalleReference" nillable="true" type="q13:EntityReferenceOfInfraestructura_DetallegUishwcV" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Infraestructura_Apartamento" nillable="true" type="tns:Infraestructura_Apartamento" />
-  <xs:complexType name="ArrayOfInfraestructura_Casa">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Infraestructura_Casa" nillable="true" type="tns:Infraestructura_Casa" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfInfraestructura_Casa" nillable="true" type="tns:ArrayOfInfraestructura_Casa" />
-  <xs:complexType name="Infraestructura_Casa">
+  <xs:complexType name="Inmueble">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q7:EntityObject">
+      <xs:extension xmlns:q14="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q14:EntityObject">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Casa" nillable="true" type="tns:Casa" />
-          <xs:element minOccurs="0" name="CasaReference" nillable="true" type="q7:EntityReferenceOfCasagUishwcV" />
-          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Id_Infrac_Detalle" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Id_casa" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Infraestructura_Detalle" nillable="true" type="tns:Infraestructura_Detalle" />
-          <xs:element minOccurs="0" name="Infraestructura_DetalleReference" nillable="true" type="q7:EntityReferenceOfInfraestructura_DetallegUishwcV" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Infraestructura_Casa" nillable="true" type="tns:Infraestructura_Casa" />
-  <xs:complexType name="Casa">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q8:EntityObject">
-        <xs:sequence>
+          <xs:element minOccurs="0" name="A_Construccion" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Casa" nillable="true" type="tns:ArrayOfCasa" />
+          <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Edificio" nillable="true" type="tns:ArrayOfEdificio" />
+          <xs:element minOccurs="0" name="Foto" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id_Ubi_Detalle" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Infraestructura_Casa" nillable="true" type="tns:ArrayOfInfraestructura_Casa" />
-          <xs:element minOccurs="0" name="Mts2" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Servicio_Casa" nillable="true" type="tns:ArrayOfServicio_Casa" />
-          <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Inf_adicional" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Ubicacion_Detalle" nillable="true" type="tns:Ubicacion_Detalle" />
-          <xs:element minOccurs="0" name="Ubicacion_DetalleReference" nillable="true" type="q8:EntityReferenceOfUbicacion_DetallegUishwcV" />
+          <xs:element minOccurs="0" name="Ubicacion_DetalleReference" nillable="true" type="q14:EntityReferenceOfUbicacion_DetallegUishwcV" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="Casa" nillable="true" type="tns:Casa" />
+  <xs:element name="Inmueble" nillable="true" type="tns:Inmueble" />
+  <xs:complexType name="ArrayOfCasa">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Casa" nillable="true" type="tns:Casa" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCasa" nillable="true" type="tns:ArrayOfCasa" />
   <xs:complexType name="ArrayOfServicio_Casa">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Servicio_Casa" nillable="true" type="tns:Servicio_Casa" />
@@ -182,15 +324,15 @@
   <xs:element name="ArrayOfServicio_Casa" nillable="true" type="tns:ArrayOfServicio_Casa" />
   <xs:complexType name="Servicio_Casa">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q9:EntityObject">
+      <xs:extension xmlns:q15="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q15:EntityObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="Casa" nillable="true" type="tns:Casa" />
-          <xs:element minOccurs="0" name="CasaReference" nillable="true" type="q9:EntityReferenceOfCasagUishwcV" />
+          <xs:element minOccurs="0" name="CasaReference" nillable="true" type="q15:EntityReferenceOfCasagUishwcV" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id_casa" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id_servicio" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Servicios" nillable="true" type="tns:Servicios" />
-          <xs:element minOccurs="0" name="ServiciosReference" nillable="true" type="q9:EntityReferenceOfServiciosgUishwcV" />
+          <xs:element minOccurs="0" name="ServiciosReference" nillable="true" type="q15:EntityReferenceOfServiciosgUishwcV" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -198,7 +340,7 @@
   <xs:element name="Servicio_Casa" nillable="true" type="tns:Servicio_Casa" />
   <xs:complexType name="Servicios">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q10:EntityObject">
+      <xs:extension xmlns:q16="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q16:EntityObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
@@ -219,46 +361,47 @@
   <xs:element name="ArrayOfServcio_Apartamento" nillable="true" type="tns:ArrayOfServcio_Apartamento" />
   <xs:complexType name="Servcio_Apartamento">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q11:EntityObject">
+      <xs:extension xmlns:q17="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q17:EntityObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="Apartamento" nillable="true" type="tns:Apartamento" />
-          <xs:element minOccurs="0" name="ApartamentoReference" nillable="true" type="q11:EntityReferenceOfApartamentogUishwcV" />
+          <xs:element minOccurs="0" name="ApartamentoReference" nillable="true" type="q17:EntityReferenceOfApartamentogUishwcV" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id_Apartemento" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id_Servicio" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Servicios" nillable="true" type="tns:Servicios" />
-          <xs:element minOccurs="0" name="ServiciosReference" nillable="true" type="q11:EntityReferenceOfServiciosgUishwcV" />
+          <xs:element minOccurs="0" name="ServiciosReference" nillable="true" type="q17:EntityReferenceOfServiciosgUishwcV" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Servcio_Apartamento" nillable="true" type="tns:Servcio_Apartamento" />
-  <xs:complexType name="Ubicacion_Detalle">
+  <xs:complexType name="Tipo_Casa">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q12:EntityObject">
+      <xs:extension xmlns:q18="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q18:EntityObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="Casa" nillable="true" type="tns:ArrayOfCasa" />
-          <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Edificio" nillable="true" type="tns:ArrayOfEdificio" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Id_Ubicacion" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Ubicacion" nillable="true" type="tns:Ubicacion" />
-          <xs:element minOccurs="0" name="UbicacionReference" nillable="true" type="q12:EntityReferenceOfUbicaciongUishwcV" />
-          <xs:element minOccurs="0" name="Zona" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="Ubicacion_Detalle" nillable="true" type="tns:Ubicacion_Detalle" />
-  <xs:complexType name="ArrayOfCasa">
+  <xs:element name="Tipo_Casa" nillable="true" type="tns:Tipo_Casa" />
+  <xs:complexType name="ArrayOfInmueble">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Casa" nillable="true" type="tns:Casa" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Inmueble" nillable="true" type="tns:Inmueble" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfCasa" nillable="true" type="tns:ArrayOfCasa" />
+  <xs:element name="ArrayOfInmueble" nillable="true" type="tns:ArrayOfInmueble" />
+  <xs:complexType name="ArrayOfPersona">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Persona" nillable="true" type="tns:Persona" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPersona" nillable="true" type="tns:ArrayOfPersona" />
   <xs:complexType name="Ubicacion">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q13="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q13:EntityObject">
+      <xs:extension xmlns:q19="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q19:EntityObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Provincia" nillable="true" type="xs:string" />
@@ -274,6 +417,62 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfUbicacion_Detalle" nillable="true" type="tns:ArrayOfUbicacion_Detalle" />
+  <xs:complexType name="Cliente">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q20="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q20:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Alquiler_Apartamento" nillable="true" type="tns:ArrayOfAlquiler_Apartamento" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Persona" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cliente" nillable="true" type="tns:Cliente" />
+  <xs:complexType name="ArrayOfPagos_Alquiler_Apartamento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pagos_Alquiler_Apartamento" nillable="true" type="tns:Pagos_Alquiler_Apartamento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPagos_Alquiler_Apartamento" nillable="true" type="tns:ArrayOfPagos_Alquiler_Apartamento" />
+  <xs:complexType name="Pagos_Alquiler_Apartamento">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q21="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q21:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Alquiler_Apartamento" nillable="true" type="tns:Alquiler_Apartamento" />
+          <xs:element minOccurs="0" name="Alquiler_ApartamentoReference" nillable="true" type="q21:EntityReferenceOfAlquiler_ApartamentogUishwcV" />
+          <xs:element minOccurs="0" name="Fecha_Pago" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Alquiler_Apartamento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Recargo" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Total_Monto" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Pagos_Alquiler_Apartamento" nillable="true" type="tns:Pagos_Alquiler_Apartamento" />
+  <xs:complexType name="ArrayOfEspecificacion_Apartamento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Especificacion_Apartamento" nillable="true" type="tns:Especificacion_Apartamento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEspecificacion_Apartamento" nillable="true" type="tns:ArrayOfEspecificacion_Apartamento" />
+  <xs:complexType name="Especificacion_Apartamento">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q22="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q22:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Apartamento" nillable="true" type="tns:Apartamento" />
+          <xs:element minOccurs="0" name="ApartamentoReference" nillable="true" type="q22:EntityReferenceOfApartamentogUishwcV" />
+          <xs:element minOccurs="0" name="Disponible" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Apartamento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Monto_Especificado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Tipo_Transaccion" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Especificacion_Apartamento" nillable="true" type="tns:Especificacion_Apartamento" />
   <xs:complexType name="ArrayOfEdificio_Detalle">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Edificio_Detalle" nillable="true" type="tns:Edificio_Detalle" />
@@ -282,10 +481,10 @@
   <xs:element name="ArrayOfEdificio_Detalle" nillable="true" type="tns:ArrayOfEdificio_Detalle" />
   <xs:complexType name="Edificio_Detalle">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q14="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q14:EntityObject">
+      <xs:extension xmlns:q23="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q23:EntityObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="Edificio" nillable="true" type="tns:Edificio" />
-          <xs:element minOccurs="0" name="EdificioReference" nillable="true" type="q14:EntityReferenceOfEdificiogUishwcV" />
+          <xs:element minOccurs="0" name="EdificioReference" nillable="true" type="q23:EntityReferenceOfEdificiogUishwcV" />
           <xs:element minOccurs="0" name="Foto" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id_Edificio" nillable="true" type="xs:string" />
@@ -294,6 +493,27 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Edificio_Detalle" nillable="true" type="tns:Edificio_Detalle" />
+  <xs:complexType name="ArrayOfFoto_Edificio">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Foto_Edificio" nillable="true" type="tns:Foto_Edificio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFoto_Edificio" nillable="true" type="tns:ArrayOfFoto_Edificio" />
+  <xs:complexType name="Foto_Edificio">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q24="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q24:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Edificio" nillable="true" type="tns:Edificio" />
+          <xs:element minOccurs="0" name="EdificioReference" nillable="true" type="q24:EntityReferenceOfEdificiogUishwcV" />
+          <xs:element minOccurs="0" name="Foto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id_Edificio" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Foto_Edificio" nillable="true" type="tns:Foto_Edificio" />
   <xs:complexType name="ArrayOfServicios">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Servicios" nillable="true" type="tns:Servicios" />

@@ -28,7 +28,7 @@ namespace Inmobiliaria.Client.UI.UserControls
 
         private void btn_AgregarCasa_Click(object sender, RoutedEventArgs e)
         {
-
+            //_controlerUserControls.PutUserControlIntoWin(new UC_NApartament(_IdEdificio, _uCListEntidad.Lbx_DataList));
         }
 
         private void btn_AgregarInfoestructura_Click(object sender, RoutedEventArgs e)

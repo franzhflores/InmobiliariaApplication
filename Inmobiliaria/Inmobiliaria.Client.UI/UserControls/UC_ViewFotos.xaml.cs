@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Inmobiliaria.Client.Controller;
+using Model = Inmobiliaria.Client.Controller.ServiceInmobiliaria;
+
 namespace Inmobiliaria.Client.UI.UserControls
 {
     /// <summary>
@@ -21,7 +23,8 @@ namespace Inmobiliaria.Client.UI.UserControls
     {
 
         List<InfoCategoriaFoto> _listinfoCategoriaFoto;
-        public UC_ViewFotos(List<InfoCategoriaFoto> listinfoCategoriaFoto )
+        string idFoto;
+        public UC_ViewFotos(List<InfoCategoriaFoto> listinfoCategoriaFoto)
         {
             InitializeComponent();
             this.Loaded += new RoutedEventHandler(UC_ViewFotos_Loaded);
@@ -32,5 +35,20 @@ namespace Inmobiliaria.Client.UI.UserControls
         {
             lbx_Fotos.ItemsSource = _listinfoCategoriaFoto;
         }
+
+        private void btn_ImageContent_Click(object sender, RoutedEventArgs e)
+        {
+            List<InfoGeneralFoto> listFotos = (List<InfoGeneralFoto>)((Button)sender).Tag;
+            InfoGeneralFoto infoSelected = listFotos.Find(I => I.Id == idFoto);
+            Win_VerPhotos verfotos = new Win_VerPhotos(listFotos,infoSelected);
+            verfotos.ShowDialog();
+
+        }
+
+        private void Image_MouseEnter(object sender, MouseEventArgs e)
+        {
+            idFoto = ((Image)sender).Tag.ToString(); 
+        }
+
     }
 }

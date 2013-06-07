@@ -18,11 +18,11 @@
     <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="StructuralObject" nillable="true" type="tns:StructuralObject" />
-  <xs:complexType name="EntityReferenceOfEdificiogUishwcV">
+  <xs:complexType name="EntityReferenceOfCasagUishwcV">
     <xs:annotation>
       <xs:appinfo>
         <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="Edificio" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+          <GenericParameter Name="Casa" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
         </GenericType>
       </xs:appinfo>
     </xs:annotation>
@@ -32,7 +32,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="EntityReferenceOfEdificiogUishwcV" nillable="true" type="tns:EntityReferenceOfEdificiogUishwcV" />
+  <xs:element name="EntityReferenceOfCasagUishwcV" nillable="true" type="tns:EntityReferenceOfCasagUishwcV" />
   <xs:complexType name="EntityReference">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:RelatedEnd">
@@ -62,21 +62,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="EntityReferenceOfApartamentogUishwcV" nillable="true" type="tns:EntityReferenceOfApartamentogUishwcV" />
-  <xs:complexType name="EntityReferenceOfInfraestructuragUishwcV">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="Infraestructura" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:EntityReference">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="EntityReferenceOfInfraestructuragUishwcV" nillable="true" type="tns:EntityReferenceOfInfraestructuragUishwcV" />
   <xs:complexType name="EntityReferenceOfInfraestructura_DetallegUishwcV">
     <xs:annotation>
       <xs:appinfo>
@@ -92,11 +77,11 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="EntityReferenceOfInfraestructura_DetallegUishwcV" nillable="true" type="tns:EntityReferenceOfInfraestructura_DetallegUishwcV" />
-  <xs:complexType name="EntityReferenceOfCasagUishwcV">
+  <xs:complexType name="EntityReferenceOfInfraestructuragUishwcV">
     <xs:annotation>
       <xs:appinfo>
         <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="Casa" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+          <GenericParameter Name="Infraestructura" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
         </GenericType>
       </xs:appinfo>
     </xs:annotation>
@@ -106,37 +91,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="EntityReferenceOfCasagUishwcV" nillable="true" type="tns:EntityReferenceOfCasagUishwcV" />
-  <xs:complexType name="EntityReferenceOfServiciosgUishwcV">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="Servicios" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:EntityReference">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="EntityReferenceOfServiciosgUishwcV" nillable="true" type="tns:EntityReferenceOfServiciosgUishwcV" />
-  <xs:complexType name="EntityReferenceOfUbicaciongUishwcV">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="Ubicacion" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:EntityReference">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="EntityReferenceOfUbicaciongUishwcV" nillable="true" type="tns:EntityReferenceOfUbicaciongUishwcV" />
+  <xs:element name="EntityReferenceOfInfraestructuragUishwcV" nillable="true" type="tns:EntityReferenceOfInfraestructuragUishwcV" />
   <xs:complexType name="EntityReferenceOfUbicacion_DetallegUishwcV">
     <xs:annotation>
       <xs:appinfo>
@@ -152,4 +107,139 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="EntityReferenceOfUbicacion_DetallegUishwcV" nillable="true" type="tns:EntityReferenceOfUbicacion_DetallegUishwcV" />
+  <xs:complexType name="EntityReferenceOfInmueblegUishwcV">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Inmueble" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityReference">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityReferenceOfInmueblegUishwcV" nillable="true" type="tns:EntityReferenceOfInmueblegUishwcV" />
+  <xs:complexType name="EntityReferenceOfServiciosgUishwcV">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Servicios" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityReference">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityReferenceOfServiciosgUishwcV" nillable="true" type="tns:EntityReferenceOfServiciosgUishwcV" />
+  <xs:complexType name="EntityReferenceOfTipo_CasagUishwcV">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Tipo_Casa" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityReference">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityReferenceOfTipo_CasagUishwcV" nillable="true" type="tns:EntityReferenceOfTipo_CasagUishwcV" />
+  <xs:complexType name="EntityReferenceOfUbicaciongUishwcV">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Ubicacion" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityReference">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityReferenceOfUbicaciongUishwcV" nillable="true" type="tns:EntityReferenceOfUbicaciongUishwcV" />
+  <xs:complexType name="EntityReferenceOfPersonagUishwcV">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Persona" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityReference">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityReferenceOfPersonagUishwcV" nillable="true" type="tns:EntityReferenceOfPersonagUishwcV" />
+  <xs:complexType name="EntityReferenceOfAgentegUishwcV">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Agente" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityReference">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityReferenceOfAgentegUishwcV" nillable="true" type="tns:EntityReferenceOfAgentegUishwcV" />
+  <xs:complexType name="EntityReferenceOfClientegUishwcV">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Cliente" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityReference">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityReferenceOfClientegUishwcV" nillable="true" type="tns:EntityReferenceOfClientegUishwcV" />
+  <xs:complexType name="EntityReferenceOfAlquiler_ApartamentogUishwcV">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Alquiler_Apartamento" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityReference">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityReferenceOfAlquiler_ApartamentogUishwcV" nillable="true" type="tns:EntityReferenceOfAlquiler_ApartamentogUishwcV" />
+  <xs:complexType name="EntityReferenceOfEdificiogUishwcV">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="EntityReferenceOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Edificio" Namespace="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityReference">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EntityReferenceOfEdificiogUishwcV" nillable="true" type="tns:EntityReferenceOfEdificiogUishwcV" />
 </xs:schema>

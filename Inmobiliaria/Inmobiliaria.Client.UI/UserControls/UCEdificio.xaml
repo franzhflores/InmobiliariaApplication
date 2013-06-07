@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
         
          <StackPanel Orientation="Horizontal" Grid.Column="1">
-            <Button Content="Nuevo Edificio" Name="Nuevo" Width="97" Click="Nuevo_Click" Height="25"/>
+            <Button Content="+Edificio" Name="Nuevo" Width="97" Click="Nuevo_Click" Height="25"/>
             <Button Content="Nuevo Edificio" Name="button1" Width="97" Height="25"/>
         </StackPanel>
         <my:UC_MenuLateralEdificio Grid.Row="1" x:Name="uc_MenuLateralEdificio"/>        

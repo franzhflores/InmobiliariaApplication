@@ -72,5 +72,8 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
 
         [OperationContract]
         string GuardarFotosEdificio(Foto_Edificio fedificio);
+
+        [OperationContract]
+        string GuardarInmueble(Inmueble inmu);
     }
 }

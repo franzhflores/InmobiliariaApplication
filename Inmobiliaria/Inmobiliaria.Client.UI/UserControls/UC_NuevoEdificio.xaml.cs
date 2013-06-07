@@ -64,27 +64,38 @@ namespace Inmobiliaria.Client.UI.UserControls
 
         public void Aceptar(object sender, EventArgs e)
         {
-            if (HelpValidacionesDeControles.SomeoneIsEmpty() || _dicInfoImage == null)
+            try
             {
-                IsPosibleClose = false;
-                MessageBox.Show("Algunos campos son requeridos", "Añadir nuevo elemento", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                return;
+                if (HelpValidacionesDeControles.SomeoneIsEmpty() || _dicInfoImage == null)
+                {
+                    IsPosibleClose = false;
+                    MessageBox.Show("Algunos campos son requeridos", "Añadir nuevo elemento", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return;
+                }
+                IsPosibleClose = true;
+                Model.Edificio newEdificio = new Model.Edificio();
+                newEdificio.Nombre = txt_Nombre.Text;
+                newEdificio.N_Plantas = Convert.ToInt16(txt_NPlantas.Text);
+                newEdificio.Inmueble = new Model.Inmueble();
+                newEdificio.Id_inmueble = "I_001";//es temporal
+                newEdificio.Inmueble.Foto = @"http://localhost:2360/" + _dicInfoImage[HelpImage.InfoImage.IMAGENAME];
+                newEdificio.Inmueble.A_Construccion = calendar1.SelectedDate.Value;
+                newEdificio.Inmueble.Inf_adicional = txt_IAdicional.Text;
+                newEdificio.Inmueble.Id_Ubi_Detalle = _idUbicacionDetalle;
+                newEdificio.Inmueble.Direccion = txt_Direccion.Text;
+                bool response = LocalDataStore.GuardarEdificio(newEdificio, _dicInfoImage[HelpImage.InfoImage.FULLPATH].ToString());
+                if (response == true)
+                {
+                    _lbx_DataList.ItemsSource = LocalDataStore.ListEdificios;
+                    MessageBox.Show("El registro fue exitoso", "Añadir nuevo elemento", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
-            IsPosibleClose = true;
-            Model.Edificio newEdificio = new Model.Edificio();
-            newEdificio.Nombre = txt_Nombre.Text;
-            newEdificio.N_Plantas = Convert.ToInt16(txt_NPlantas.Text);
-            newEdificio.mainfoto = @"http://localhost:2360/" + _dicInfoImage[HelpImage.InfoImage.IMAGENAME];
-            newEdificio.A_Contruccion = calendar1.SelectedDate.Value;
-            newEdificio.Inf_Adicional = txt_IAdicional.Text;
-            newEdificio.Id_Ubi_Detalle = _idUbicacionDetalle;
-            newEdificio.Direccion = txt_Direccion.Text;
-            bool response = LocalDataStore.GuardarEdificio(newEdificio, _dicInfoImage[HelpImage.InfoImage.FULLPATH].ToString());
-            if (response == true)
+            catch (Exception ex)
             {
-                _lbx_DataList.Items.Refresh();
-                MessageBox.Show("El registro fue exitoso", "Añadir nuevo elemento", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Error en el servidor",ex.Message,MessageBoxButton.OK,MessageBoxImage.Warning);
+                
             }
+          
             //Help.UploadFile(newEdificio.mainfoto,_dicInfoImage[Help.InfoImage.FULLPATH].ToString()) ;
         }
 

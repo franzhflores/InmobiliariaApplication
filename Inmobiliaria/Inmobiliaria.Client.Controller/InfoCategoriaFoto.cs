@@ -8,6 +8,7 @@ namespace Inmobiliaria.Client.Controller
     //new line for merlo
     public class InfoCategoriaFoto
     {
+        public string Id { get; set; }
         public string Categoria { get; set; }
         public List<InfoGeneralFoto> ListaDeFotos { get; set; }
 

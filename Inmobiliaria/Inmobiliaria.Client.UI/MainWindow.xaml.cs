@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Inmobiliaria.Client.Controller;
 
 namespace Inmobiliaria.Client.UI
 {
@@ -31,7 +31,7 @@ namespace Inmobiliaria.Client.UI
         {
 
             if (gridUCContainer.Children.Count != 0)
-                gridUCContainer.Children.RemoveAt(0);
+                gridUCContainer.Children.RemoveRange(0,3);
 
             gridUCContainer.Children.Add(usercontrol);
         }
@@ -49,6 +49,11 @@ namespace Inmobiliaria.Client.UI
         private void btn_OpenCasa_Click(object sender, RoutedEventArgs e)
         {
             LoadUCActual(new UserControls.UC_Casa(_controlerUserControls));
+        }
+
+        private void btn_Update_Click(object sender, RoutedEventArgs e)
+        {
+            LocalDataStore.SetListasEnNull();
         }
    
     }

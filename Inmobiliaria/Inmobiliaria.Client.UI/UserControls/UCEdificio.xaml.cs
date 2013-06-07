@@ -75,7 +75,6 @@ namespace Inmobiliaria.Client.UI.UserControls
 
         private string getIdEdificioFromTag(object sender)
         {
-            MessageBox.Show(sender.GetType().ToString());
             if (sender == null) return "";
             string idEdificio = (sender as Button).Tag.ToString();
             if (idEdificio == "") return "";
@@ -101,13 +100,25 @@ namespace Inmobiliaria.Client.UI.UserControls
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            bool response = LocalDataStore.EliminarEdificio(getIdEdificioFromTag(sender));
-            if (response)
+            MessageBoxResult result = MessageBox.Show("Esta seguro de quitar este registro de la base de datos", "Quitar Edificio", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (MessageBoxResult.Yes == result)
             {
-                MessageBox.Show("Archivo eliminado", "Eliminar un registro", MessageBoxButton.OK, MessageBoxImage.Information);
-                _uCListEntidad.Lbx_DataList.Items.Refresh();
-                //lbx_DataList.Items.Refresh();
-                //lbx_DataList.ItemsSource = LocalDataStore.ListEdificios;
+                try
+                {
+                    bool response = LocalDataStore.EliminarEdificio(getIdEdificioFromTag(sender));
+                    if (response)
+                    {
+                        MessageBox.Show("Archivo eliminado", "Eliminar un registro", MessageBoxButton.OK, MessageBoxImage.Information);
+                        _uCListEntidad.Lbx_DataList.ItemsSource = LocalDataStore.ListEdificios;
+                        //lbx_DataList.Items.Refresh();
+                        //lbx_DataList.ItemsSource = LocalDataStore.ListEdificios;
+                    }else
+                        MessageBox.Show("No puede quitar un registro con informacion", "Quitar Registro", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show("No puede quitar un registro con informacion", "Quitar Registro",MessageBoxButton.OK,MessageBoxImage.Warning);
+                }
             }
         }
 
@@ -115,7 +126,7 @@ namespace Inmobiliaria.Client.UI.UserControls
         {
             UC_Apartamento uc_apartamento = new UC_Apartamento(_controlerUserControls, getIdEdificioFromTag(sender));
             LoadUCApartamento(uc_apartamento);
-           
+
         }
 
         private void lbx_DataList_SelectionChanged(object sender, EventArgs e)
@@ -156,7 +167,7 @@ namespace Inmobiliaria.Client.UI.UserControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"ERROR",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
