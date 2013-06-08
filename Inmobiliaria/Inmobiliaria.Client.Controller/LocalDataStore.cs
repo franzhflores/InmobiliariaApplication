@@ -495,5 +495,43 @@ namespace Inmobiliaria.Client.Controller
         }
 
         #endregion
+
+        #region Trabajando con Casas
+        static List<Model.Tipo_Casa> _listTipoCasa;
+
+        public static List<Model.Tipo_Casa> ListTipoCasa
+        {
+            get
+            {
+                if (_listTipoCasa == null)
+                    _listTipoCasa = ServicesManager.Instance.ServiceClient.GetTipoCasa().ToList();
+                return _listTipoCasa;
+            }
+        }
+
+        static List<Model.Casa> _listCasa;
+
+        public static List<Model.Casa> ListCasa
+        {
+            get
+            {
+                if (_listCasa == null)
+                    _listCasa = ServicesManager.Instance.ServiceClient.GetCasas().ToList();
+                return _listCasa;
+            }
+        }
+
+        public static bool GuardarCasa(Model.Casa casa)
+        {
+            string response = ServicesManager.Instance.ServiceClient.GuardarCasa(casa);
+            if (response != "")
+            {
+                _listCasa = null;
+                return true;
+            }
+            return false;
+        }
+
+        #endregion
     }
 }

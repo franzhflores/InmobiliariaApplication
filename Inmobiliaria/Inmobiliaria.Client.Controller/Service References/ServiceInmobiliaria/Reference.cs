@@ -3364,6 +3364,7 @@ namespace Inmobiliaria.Client.Controller.ServiceInmobiliaria {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<Inmobiliaria.Client.Controller.ServiceInmobiliaria.Foto_Edificio>))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Inmobiliaria.Client.Controller.ServiceInmobiliaria.Foto_Edificio))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<Inmobiliaria.Client.Controller.ServiceInmobiliaria.Servicios>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<Inmobiliaria.Client.Controller.ServiceInmobiliaria.Tipo_Casa>))]
     public partial class EntityKeyMember : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -3659,6 +3660,15 @@ namespace Inmobiliaria.Client.Controller.ServiceInmobiliaria {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GuardarInmueble", ReplyAction="http://tempuri.org/IService1/GuardarInmuebleResponse")]
         string GuardarInmueble(Inmobiliaria.Client.Controller.ServiceInmobiliaria.Inmueble inmu);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTipoCasa", ReplyAction="http://tempuri.org/IService1/GetTipoCasaResponse")]
+        System.Collections.Generic.List<Inmobiliaria.Client.Controller.ServiceInmobiliaria.Tipo_Casa> GetTipoCasa();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GuardarCasa", ReplyAction="http://tempuri.org/IService1/GuardarCasaResponse")]
+        string GuardarCasa(Inmobiliaria.Client.Controller.ServiceInmobiliaria.Casa casa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCasas", ReplyAction="http://tempuri.org/IService1/GetCasasResponse")]
+        System.Collections.Generic.List<Inmobiliaria.Client.Controller.ServiceInmobiliaria.Casa> GetCasas();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3770,6 +3780,18 @@ namespace Inmobiliaria.Client.Controller.ServiceInmobiliaria {
         
         public string GuardarInmueble(Inmobiliaria.Client.Controller.ServiceInmobiliaria.Inmueble inmu) {
             return base.Channel.GuardarInmueble(inmu);
+        }
+        
+        public System.Collections.Generic.List<Inmobiliaria.Client.Controller.ServiceInmobiliaria.Tipo_Casa> GetTipoCasa() {
+            return base.Channel.GetTipoCasa();
+        }
+        
+        public string GuardarCasa(Inmobiliaria.Client.Controller.ServiceInmobiliaria.Casa casa) {
+            return base.Channel.GuardarCasa(casa);
+        }
+        
+        public System.Collections.Generic.List<Inmobiliaria.Client.Controller.ServiceInmobiliaria.Casa> GetCasas() {
+            return base.Channel.GetCasas();
         }
     }
 }

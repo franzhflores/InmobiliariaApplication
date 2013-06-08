@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="Inmobiliaria.Client.UI.UserControls.UC_ListCasa"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <ListBox Name="lbx_DataList" Grid.Row="1" Grid.Column="1" SelectionChanged="lbx_DataList_SelectionChanged" ItemContainerStyle="{DynamicResource MetroListBoxItemStyle}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1" BorderBrush="Orange" >
+                        <Grid Margin="0,5,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="400"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Image  Grid.RowSpan="4" Source="{Binding Inmueble.Foto}" Stretch="Fill" />
+
+                            <Label Content="{Binding Id}"  Grid.Column="1" />
+                            <Label Content="Tipo Casa: "  Grid.Column="2" />
+                            <Label Content="{Binding Tipo_Casa.Nombre, FallbackValue=NoOne}"  Grid.Column="3"  />
+                            <Label Content="Direccion"  Grid.Column="1" Grid.Row="1"/>
+                            <Label Content="{Binding Inmueble.Direccion, FallbackValue=Nothing}"  Grid.Column="2" Grid.Row="1"/>
+                            <Label Content="Zona"  Grid.Column="1" Grid.Row="2"/>
+                            <Label Content="{Binding Inmueble.Ubicacion_Detalle.Zona}"  Grid.Column="2" Grid.Row="2"/>
+                            <Button Content="Ver Detalle" Grid.Column="1" Grid.Row="3"/>
+
+                            <StackPanel Grid.Row="4" Orientation="Horizontal" Grid.ColumnSpan="4" Grid.Column="1" HorizontalAlignment="Right" >
+                                <Button Content="+Fotos"  Name="btn_Foto" Tag="{Binding Id}" Width="110" Click="btn_Foto_Click" />
+                                <Button Content="+Infraestructura"  Name="btn_AgregarInfoestructura"  Tag="{Binding Id}" Width="120" Click="btn_AgregarInfoestructura_Click" />
+                                <Button Content="+Servicios"  Tag="{Binding Id}" Width="120" Name="btn_servicios" Click="btn_servicios_Click" />
+                                <Button Content="Quitar"  Name="btn_Delete"  Click="btn_Delete_Click" Tag="{Binding Id}" Width="110" />
+                                <Button Content="Modificar" Name="btn_Update" Click="btn_Update_Click"  Tag="{Binding Id}"  Width="{Binding Width,ElementName=btn_Delete}"/>
+                            
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

@@ -520,4 +520,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfServicios" nillable="true" type="tns:ArrayOfServicios" />
+  <xs:complexType name="ArrayOfTipo_Casa">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tipo_Casa" nillable="true" type="tns:Tipo_Casa" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTipo_Casa" nillable="true" type="tns:ArrayOfTipo_Casa" />
 </xs:schema>

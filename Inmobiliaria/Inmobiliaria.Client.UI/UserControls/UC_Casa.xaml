@@ -5,21 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="392" d:DesignWidth="785">
-    <Grid Background="{StaticResource LightBackground}">
+    <Grid Background="{StaticResource LightBackground}" Name="grid_Context">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70*" />
+            <ColumnDefinition Width="20*" />
             <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
             <RowDefinition Height="276*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" Grid.Column="1">
+            <Button Content="Get Back" Height="23"  Name="btn_getBack" Width="75" Margin="0,0,5,0"/>
             <Button Content="+Casa" Name="btn_AgregarCasa" Width="125" Margin="0,0,5,0" Click="btn_AgregarCasa_Click" />
+            <Label Content="Numero de Items" Name="lbl_Numero" Style="{x:Null}"/>
         </StackPanel>
-        <ScrollViewer Grid.Column="1" Grid.Row="1">
+
+        <ScrollViewer Grid.Column="2" Grid.Row="1">
             <StackPanel >
-                <Expander Name="exp_Infraestructura" Header="Infraestructura" Cursor="Hand" >
+                <Expander Name="exp_Infraestructura" Header="Infraestructura" Cursor="Hand"  >
                     <ListBox Name="lbx_Infraestructura">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -63,39 +67,7 @@
                 </Expander>
             </StackPanel>
         </ScrollViewer>
-        <ListBox Name="lbx_DataList" Grid.Row="1" SelectionChanged="lbx_DataList_SelectionChanged" ItemContainerStyle="{DynamicResource MetroListBoxItemStyle}" >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderThickness="1"  BorderBrush="{StaticResource LinkButtonForeground}">
-                        <Grid >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="5"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="80" />
-                                <ColumnDefinition Width="60" />
-                                <ColumnDefinition Width="500"/>
-                            </Grid.ColumnDefinitions>
-                            <!-- Assumes MVVM and you wish to bind to properties and commands -->
-                            <Label Content="{Binding Id}" HorizontalContentAlignment="Center" FontWeight="ExtraBold"/>
-                            <Label Content="Piso: " Grid.Column="1"  HorizontalContentAlignment="Right" />
-                            <Label Content="{Binding N_Piso}" Grid.Column="2"/>
-                            <Label Content="Puerta: " Grid.Column="1"  Grid.Row="1" HorizontalContentAlignment="Right" />
-                            <Label Content="{Binding N_Puerta}" Grid.Row="1" Grid.Column="2" />
-                            <Image Grid.RowSpan="2" Source="{Binding mainfoto}" Stretch="Fill"  Grid.Row="1"/>
-                            <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Right" >
-                                <Button Content="+Infraestructura"  Name="btn_AgregarInfoestructura"  Tag="{Binding Id}" Width="120" Click="btn_AgregarInfoestructura_Click" />
-                                <Button Content="+Servicios"  Tag="{Binding Id}" Width="120" Name="btn_servicios" Click="btn_servicios_Click" />
-                                <Button Content="+Fotos"  Tag="{Binding Id}" Width="120" Name="btn_Fotos" Click="btn_Fotos_Click" />
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+
 
     </Grid>
 </UserControl>

@@ -724,6 +724,10 @@
           <Parameter Name="Id_TC" Type="varchar" Mode="In" />
           <Parameter Name="M2" Type="varchar" Mode="In" />
           <Parameter Name="Id_UbiDetalle" Type="varchar" Mode="In" />
+          <Parameter Name="A_Construccion" Type="datetime" Mode="In" />
+          <Parameter Name="Inf_Adicional" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Foto" Type="varchar" Mode="In" />
+          <Parameter Name="direccion" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="InsertDetalleUbicacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="varchar" Mode="In" />
@@ -1095,6 +1099,15 @@
             <End Role="Ubicacion" EntitySet="Ubicacion" />
             <End Role="Ubicacion_Detalle" EntitySet="Ubicacion_Detalle" />
           </AssociationSet>
+          <FunctionImport Name="InsertCasa" ReturnType="Collection(String)">
+            <Parameter Name="Id_TC" Mode="In" Type="String" />
+            <Parameter Name="M2" Mode="In" Type="String" />
+            <Parameter Name="Id_UbiDetalle" Mode="In" Type="String" />
+            <Parameter Name="A_Construccion" Mode="In" Type="DateTime" />
+            <Parameter Name="Inf_Adicional" Mode="In" Type="String" />
+            <Parameter Name="Foto" Mode="In" Type="String" />
+            <Parameter Name="direccion" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Apartamento">
           <Key>
@@ -1922,6 +1935,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertCasa" FunctionName="INMOBILIARIAModel.Store.InsertCasa" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

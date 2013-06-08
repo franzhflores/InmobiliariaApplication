@@ -1179,6 +1179,91 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
     
             return base.ExecuteFunction<global::System.String>("InsertFotoEdificio", id_EdificioParameter, fotoParameter, descripcionParameter);
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="id_TC">No hay documentación de metadatos disponible.</param>
+        /// <param name="m2">No hay documentación de metadatos disponible.</param>
+        /// <param name="id_UbiDetalle">No hay documentación de metadatos disponible.</param>
+        /// <param name="a_Construccion">No hay documentación de metadatos disponible.</param>
+        /// <param name="inf_Adicional">No hay documentación de metadatos disponible.</param>
+        /// <param name="foto">No hay documentación de metadatos disponible.</param>
+        /// <param name="direccion">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<global::System.String> InsertCasa(global::System.String id_TC, global::System.String m2, global::System.String id_UbiDetalle, Nullable<global::System.DateTime> a_Construccion, global::System.String inf_Adicional, global::System.String foto, global::System.String direccion)
+        {
+            ObjectParameter id_TCParameter;
+            if (id_TC != null)
+            {
+                id_TCParameter = new ObjectParameter("Id_TC", id_TC);
+            }
+            else
+            {
+                id_TCParameter = new ObjectParameter("Id_TC", typeof(global::System.String));
+            }
+    
+            ObjectParameter m2Parameter;
+            if (m2 != null)
+            {
+                m2Parameter = new ObjectParameter("M2", m2);
+            }
+            else
+            {
+                m2Parameter = new ObjectParameter("M2", typeof(global::System.String));
+            }
+    
+            ObjectParameter id_UbiDetalleParameter;
+            if (id_UbiDetalle != null)
+            {
+                id_UbiDetalleParameter = new ObjectParameter("Id_UbiDetalle", id_UbiDetalle);
+            }
+            else
+            {
+                id_UbiDetalleParameter = new ObjectParameter("Id_UbiDetalle", typeof(global::System.String));
+            }
+    
+            ObjectParameter a_ConstruccionParameter;
+            if (a_Construccion.HasValue)
+            {
+                a_ConstruccionParameter = new ObjectParameter("A_Construccion", a_Construccion);
+            }
+            else
+            {
+                a_ConstruccionParameter = new ObjectParameter("A_Construccion", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter inf_AdicionalParameter;
+            if (inf_Adicional != null)
+            {
+                inf_AdicionalParameter = new ObjectParameter("Inf_Adicional", inf_Adicional);
+            }
+            else
+            {
+                inf_AdicionalParameter = new ObjectParameter("Inf_Adicional", typeof(global::System.String));
+            }
+    
+            ObjectParameter fotoParameter;
+            if (foto != null)
+            {
+                fotoParameter = new ObjectParameter("Foto", foto);
+            }
+            else
+            {
+                fotoParameter = new ObjectParameter("Foto", typeof(global::System.String));
+            }
+    
+            ObjectParameter direccionParameter;
+            if (direccion != null)
+            {
+                direccionParameter = new ObjectParameter("direccion", direccion);
+            }
+            else
+            {
+                direccionParameter = new ObjectParameter("direccion", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<global::System.String>("InsertCasa", id_TCParameter, m2Parameter, id_UbiDetalleParameter, a_ConstruccionParameter, inf_AdicionalParameter, fotoParameter, direccionParameter);
+        }
 
         #endregion
 

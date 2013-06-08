@@ -43,7 +43,6 @@ namespace Inmobiliaria.Client.UI.UserControls
             StartUserControl();
         }
 
-
         private void StartUserControl()
         {
            SetUCList(_uCListEntidad as UC_ListApartamento);
@@ -112,10 +111,5 @@ namespace Inmobiliaria.Client.UI.UserControls
             //MessageBox.Show("Element selected"+listSeleccted.Count);
         }
 
-        class Info
-        {
-            public string des { get; set; }
-            public List<InfoGeneralFoto> fotos { get; set; }
-        }
     }
 }

@@ -66,6 +66,9 @@
     <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Apartamento.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Casa.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Edificio.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -88,6 +91,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Servicios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Tipo_Casa.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceInmobiliaria\Inmobiliaria.Client.Controller.ServiceInmobiliaria.Ubicacion.datasource">

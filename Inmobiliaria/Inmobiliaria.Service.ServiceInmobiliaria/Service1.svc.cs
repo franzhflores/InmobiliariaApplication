@@ -154,7 +154,6 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
             return _entitiesManager.Context.Foto_Edificio.ToList();
         }
 
-
         public string GuardarFotosEdificio(Foto_Edificio fedificio)
         {
             System.Data.Objects.ObjectResult objectResponse = _entitiesManager.Context.InsertFotoEdificio(fedificio.Id_Edificio,fedificio.Foto,fedificio.Descripcion);
@@ -163,10 +162,27 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
             return "";
         }
 
-
         public string GuardarInmueble(Inmueble inmu)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Tipo_Casa> GetTipoCasa()
+        {
+            return _entitiesManager.Context.Tipo_Casa.ToList();
+        }
+
+        public string GuardarCasa(Casa  casa)
+        {
+            System.Data.Objects.ObjectResult objectResponse = _entitiesManager.Context.InsertCasa(casa.Id_TipoCasa,casa.Mts2,casa.Inmueble.Id_Ubi_Detalle,casa.Inmueble.A_Construccion,casa.Inmueble.Inf_adicional,casa.Inmueble.Foto,casa.Inmueble.Direccion);
+            foreach (string r in objectResponse)
+                return r;
+            return "";
+        }
+        
+        public List<Casa> GetCasas()
+        {
+            return _entitiesManager.Context.Casa.ToList();
         }
     }
 }

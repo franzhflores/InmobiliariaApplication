@@ -77,6 +77,9 @@
     <Compile Include="UserControls\UC_ListApartamento.xaml.cs">
       <DependentUpon>UC_ListApartamento.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UC_ListCasa.xaml.cs">
+      <DependentUpon>UC_ListCasa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UC_MenuLateralEdificio.xaml.cs">
       <DependentUpon>UC_MenuLateralEdificio.xaml</DependentUpon>
     </Compile>
@@ -188,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\UC_ListApartamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UC_ListCasa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

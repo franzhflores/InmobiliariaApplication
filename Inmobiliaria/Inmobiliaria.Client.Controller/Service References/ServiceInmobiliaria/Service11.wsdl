@@ -136,6 +136,24 @@
   <wsdl:message name="IService1_GuardarInmueble_OutputMessage">
     <wsdl:part name="parameters" element="tns:GuardarInmuebleResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetTipoCasa_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTipoCasa" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetTipoCasa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTipoCasaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarCasa_InputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarCasa" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GuardarCasa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GuardarCasaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCasas_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCasas" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCasas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCasasResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetTodosLosEdificios">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTodosLosEdificios" message="tns:IService1_GetTodosLosEdificios_InputMessage" />
@@ -220,6 +238,18 @@
     <wsdl:operation name="GuardarInmueble">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GuardarInmueble" message="tns:IService1_GuardarInmueble_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GuardarInmuebleResponse" message="tns:IService1_GuardarInmueble_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoCasa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTipoCasa" message="tns:IService1_GetTipoCasa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTipoCasaResponse" message="tns:IService1_GetTipoCasa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GuardarCasa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GuardarCasa" message="tns:IService1_GuardarCasa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GuardarCasaResponse" message="tns:IService1_GuardarCasa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCasas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCasas" message="tns:IService1_GetCasas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCasasResponse" message="tns:IService1_GetCasas_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -406,6 +436,33 @@
     </wsdl:operation>
     <wsdl:operation name="GuardarInmueble">
       <soap:operation soapAction="http://tempuri.org/IService1/GuardarInmueble" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoCasa">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetTipoCasa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GuardarCasa">
+      <soap:operation soapAction="http://tempuri.org/IService1/GuardarCasa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCasas">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCasas" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

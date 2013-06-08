@@ -75,5 +75,14 @@ namespace Inmobiliaria.Service.ServiceInmobiliaria
 
         [OperationContract]
         string GuardarInmueble(Inmueble inmu);
+
+        [OperationContract]
+        List<Tipo_Casa> GetTipoCasa();
+
+        [OperationContract]
+        string GuardarCasa(Casa casa);
+
+        [OperationContract]
+        List<Casa> GetCasas();
     }
 }

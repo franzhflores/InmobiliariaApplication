@@ -22,10 +22,16 @@
             <ColumnDefinition Width="203*" />
             <ColumnDefinition Width="274*" />
         </Grid.ColumnDefinitions>
-        <Label Content="Nombre" Height="28" HorizontalAlignment="Left" Margin="115,1,0,0" Name="label1" VerticalAlignment="Top" Width="155" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="2,1,0,0" Name="txt_Nombre" VerticalAlignment="Top" Width="191" Grid.Column="2" Grid.Row="1" />
-        <Label Content="# Plantas" Height="28" HorizontalAlignment="Left" Margin="115,1,0,0" Name="label2" VerticalAlignment="Top" Width="155" Grid.Row="2" Grid.ColumnSpan="2" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="2,1,0,0" Name="txt_NPlantas" VerticalAlignment="Top" Width="191" Grid.Column="2" Grid.Row="2" />
+        <Label Content="Tipo  Casa" Height="28" HorizontalAlignment="Left" Margin="115,1,0,0" Name="label1" VerticalAlignment="Top" Width="155" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+        <ComboBox Grid.Column="2" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="2,8,0,0" Name="cbx_TipoCasa" VerticalAlignment="Top" Width="191" SelectionChanged="cbx_TipoCasa_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Grid.Column="2" Text="{Binding Nombre}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Content="Mts2" Height="28" HorizontalAlignment="Left" Margin="115,1,0,0" Name="label2" VerticalAlignment="Top" Width="155" Grid.Row="2" Grid.ColumnSpan="2" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="2,1,0,0" Name="txt_Mts2" VerticalAlignment="Top" Width="191" Grid.Column="2" Grid.Row="2" />
         <Label Content="Informacion Adicional" Height="28" HorizontalAlignment="Left" Margin="115,6,0,0" Name="label3" VerticalAlignment="Top" Width="155" Grid.Row="3" Grid.ColumnSpan="2" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="0,8,0,0" Name="txt_IAdicional" VerticalAlignment="Top" Width="191" Grid.Column="2" Grid.Row="3" />
         <Label Content="Fecha de Creacion" Height="28" HorizontalAlignment="Left" Margin="115,6,0,0" Name="label4" VerticalAlignment="Top" Width="155" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2" />

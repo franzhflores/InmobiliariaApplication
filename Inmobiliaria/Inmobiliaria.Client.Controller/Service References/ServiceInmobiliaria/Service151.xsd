@@ -278,4 +278,42 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetTipoCasa">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTipoCasaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" minOccurs="0" name="GetTipoCasaResult" nillable="true" type="q21:ArrayOfTipo_Casa" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarCasa">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" minOccurs="0" name="casa" nillable="true" type="q22:Casa" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GuardarCasaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GuardarCasaResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCasas">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCasasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Inmobiliaria.Service.ServiceInmobiliaria" minOccurs="0" name="GetCasasResult" nillable="true" type="q23:ArrayOfCasa" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
